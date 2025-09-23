@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Heart, Lightbulb, Target, Users } from "lucide-react"
 import memberImage from  "../assets/images/about-image.png"
-import existImage from  "../assets/images/whyWeExist.jpg"
+import existImage from  "../assets/images/whyWeexist.jpg"
 import CTA from "./home/CTA"
 
 export default function About() {
