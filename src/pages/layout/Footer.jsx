@@ -45,11 +45,11 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-blue-900 font-heebo">Quick Links</h4>
             <ul className="space-y-3 text-gray-600 font-rubik">
               {[
-                { name: "Home", link: "#" },
-                { name: "Packages", link: "#" },
+                { name: "Home", link: "/" },
+                { name: "Packages", link: "#packages" },
                 { name: "Contact", link: "#" },
-                { name: "Our Team", link: "#" },
-                { name: "Our Story", link: "#" },
+                { name: "About us", link: "/about" },
+                { name: "Our Team", link: "/team" },
               ].map((item, index) => (
                 <li key={index}>
                   <a href={item.link} className="hover:text-cyan-500 transition-colors">
@@ -65,13 +65,14 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-blue-900 font-heebo">Programs</h4>
             <ul className="space-y-3 text-gray-600 font-rubik">
               {[
-                "Mode of Training",
-                "Services",
-                "Nurture for Business",
+                { name: "Mode of Training", link: "/training" },
+                { name: "Services", link: "#services" },
+                { name: "Nurture for Business", link: "/nurture" },
+                // { name: "Contact", link: "/contact" },
               ].map((service, index) => (
                 <li key={index}>
-                  <a href="#" className="hover:text-cyan-500 transition-colors">
-                    {service}
+                  <a href={service.link} className="hover:text-cyan-500 transition-colors">
+                    {service.name}
                   </a>
                 </li>
               ))}
