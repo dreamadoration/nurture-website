@@ -17,12 +17,12 @@ export default function CTA() {
           
           {/* Left: Heading + Subheading */}
           <div className="lg:col-span-2 text-left">
-       <h2 className="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-              Accelerate Pharma Success
+       <h2 className="text-5xl lg:text-5xl font-heebo font-extrabold text-white leading-tight">
+Meeting all your pharma training needs
             </h2>
             <p className="text-lg text-blue-200 mt-3">
-              Training that drives compliance, builds stronger teams, 
-              and keeps you ahead of the competition.
+              We provide online training tailored for pharmaceutical companies, delivered by top
+industry experts and designed to ensure effective, practical learning.
             </p>
           </div>
 

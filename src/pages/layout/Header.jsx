@@ -1,18 +1,57 @@
-import React, { useState } from "react";
-import { Phone, Mail, Facebook, Instagram, Linkedin, ChevronDown, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client"
 
-function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+import { useEffect, useState } from "react"
+import { ChevronDown, ChevronUp, Facebook, Instagram, Linkedin, Mail, Menu, Phone } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
-  const toggleDropdown = (name) => {
-    setOpenDropdown(openDropdown === name ? null : name);
-  };
+const storyItems = [
+  { title: "About Us", href: "/about" },
+  { title: "Team", href: "/team" },
+  { title: "Value & Mission", href: "/values" },
+]
+
+const programItems = [
+  { title: "Mode of Training", href: "/training" },
+  { title: "Services", href: "services" },
+  { title: "Nurture for Business", href: "/nurture" },
+]
+
+export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openSection, setOpenSection] = useState(null)
+  const navigate = useNavigate() 
+   const location = useLocation()
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section)
+  }
+
+  const handleDemoClick = () => {
+    setMobileMenuOpen(false)
+    navigate("#registration") 
+  }
+ const scrollToSection = (sectionId) => {
+  if (location.pathname !== "/") {
+   
+    navigate("/", { state: { scrollTo: sectionId } });
+  } else {
+    const element = document.getElementById(sectionId);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* Top Bar */}
+    <>
+      {/* Top bar */}
       <div className="w-full bg-blue-900 text-white">
         <div className="mx-auto flex ml-4 mr-4 md:ml-10 md:mr-10 items-center justify-between px-4 py-2 text-sm">
           <div className="flex items-center gap-6">
@@ -26,26 +65,27 @@ function Header() {
               <span className="sm:hidden">Email</span>
             </a>
           </div>
+
           <div className="flex items-center gap-3">
-          <a href="#registration"className="hidden md:block">
-  <Button
-    size="lg"
-    className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
-               text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
-               shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
-  >
-    Register for Demo
-  </Button>
-</a>
+            <a href="#registration" className="hidden md:block">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
+                           text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
+                           shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+              >
+                Register for Demo
+              </Button>
+            </a>
 
             <div className="flex items-center gap-2">
-              <a href="https://facebook.com" target="_blank" className="hover:text-teal-300">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com" target="_blank" className="hover:text-teal-300">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" className="hover:text-teal-300">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -53,139 +93,210 @@ function Header() {
         </div>
       </div>
 
-      {/* Main Nav */}
-      <div className="w-full border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-[#ddd] bg-white/95 backdrop-blur shadow-sm">
+        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo */}
-          <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Nurture</a>
+          <Link to="/" className="flex items-center space-x-2">
+      <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Nurture</a>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="#packages">Packages</NavLink>
+          </Link>
 
-            <NavDropdown
-              label="Story"
-              open={openDropdown === "story"}
-              onClick={() => toggleDropdown("story")}
-            >
-              <DropdownLink href="/#">Our Story</DropdownLink>
-              <DropdownLink href="#team">Team</DropdownLink>
-              <DropdownLink href="/#">Values & Mission</DropdownLink>
-            </NavDropdown>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8 font-rubik">
+            <Link to="/" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium">
+              Home
+            </Link>
+            <Link to="#" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium" onClick={() => scrollToSection("packages")}>
+              Packages
+            </Link>
 
-            <NavDropdown
-              label="Programs"
-              open={openDropdown === "programs"}
-              onClick={() => toggleDropdown("programs")}
-            >
-              <DropdownLink href="/#">Mode of training</DropdownLink>
-              <DropdownLink href="#services">Services</DropdownLink>
-              <DropdownLink href="/#">Nurture for Business</DropdownLink>
-            </NavDropdown>
+            {/* Story Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main">
+                <span className="menu-main">Story</span>
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-white border-gray-200 shadow-lg">
+                {storyItems.map((item) => (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link
+                      to={item.href}
+                      className="w-full px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
+                    >
+                      {item.title}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-            <NavLink href="">Contact</NavLink>
+            {/* Programs Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main">
+                <span className="menu-main">Programs</span>
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg">
+  {programItems.map((item) => (
+    <DropdownMenuItem key={item.href} asChild>
+      {item.href.startsWith("/") ? (
+        // Normal page link
+        <Link
+          to={item.href}
+          className="w-full px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
+        >
+          {item.title}
+        </Link>
+      ) : (
+        // Scroll to section
+        <button
+          onClick={() => scrollToSection(item.href)}
+          className="w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
+        >
+          {item.title}
+        </button>
+      )}
+    </DropdownMenuItem>
+  ))}
+</DropdownMenuContent>
+
+            </DropdownMenu>
+
+            <Link to="/contact" className="text-gray-700 hover:text-cyan-600 font-medium">
+              Contact
+            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 border rounded" onClick={() => setMobileOpen(true)}>
-            <Menu className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
+          {/* Mobile Menu */}
+           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+      <SheetTrigger asChild className="md:hidden">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="text-gray-700 hover:bg-gray-100"
+        >
 
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 md:hidden" onClick={() => setMobileOpen(false)}>
-          <div
-            className="absolute right-0 top-0 h-full w-72 bg-white shadow-lg p-4 overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-teal-700">Menu</h2>
-              <button onClick={() => setMobileOpen(false)}>
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+        <Menu className="!h-[120px] !w-8" />
 
-            <div className="flex flex-col gap-2">
-              <MobileLink href="/">Home</MobileLink>
-              <MobileLink href="#packages">Packages</MobileLink>
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </SheetTrigger>
 
-              <MobileDropdown label="Story">
-                <MobileLink href="/">Our Story</MobileLink>
-                <MobileLink href="#team">Team</MobileLink>
-                <MobileLink href="/">Values & Mission</MobileLink>
-              </MobileDropdown>
-
-              <MobileDropdown label="Programs">
-                <MobileLink href="/">Mode of training</MobileLink>
-                <MobileLink href="#services">Services</MobileLink>
-                <MobileLink href="">Nurture for Business</MobileLink>
-              </MobileDropdown>
-
-              <MobileLink href="/">Contact</MobileLink>
-
-              <button className="mt-6 px-4 py-2 rounded bg-teal-600 text-white hover:bg-teal-700">
-                Register
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
-
-/* ----------------- Small Reusable Components ----------------- */
-function NavLink({ href, children }) {
-  return (
-    <a href={href} className="hover:text-blue-900 text-slate-700">{children}</a>
-  );
-}
-
-function NavDropdown({ label, open, onClick, children }) {
-  return (
-    <div className="relative">
-      <button onClick={onClick} className="flex items-center gap-1 hover:text-blue-900 text-slate-700">
-        {label}
-        <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && (
-        <div className="absolute left-0 mt-2 w-40 rounded-md bg-white border border-[#ddd] shadow-md">
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function DropdownLink({ href, children }) {
-  return (
-    <a href={href} className="block pt-3 pb-2 pl-2 pr-2 text-md border-b border-[#ddd]  hover:bg-slate-100">{children}</a>
-  );
-}
-
-function MobileLink({ href, children }) {
-  return (
-    <a href={href} className="px-2 py-2 rounded hover:bg-slate-100 text-slate-700">{children}</a>
-  );
-}
-
-function MobileDropdown({ label, children }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div>
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center px-2 py-2 rounded hover:bg-slate-100 text-slate-700"
+      <SheetContent
+        side="right"
+        className="w-80 bg-white border-gray-200 px-6 py-6 font-rubik"
       >
-        {label}
-        <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && <div className="ml-4 flex flex-col">{children}</div>}
+        <div className="flex flex-col space-y-6">
+          {/* Simple Links */}
+          <Link
+            to="/"
+            className="text-lg font-medium text-gray-700 hover:text-cyan-600"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+           <Link to="#" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium" onClick={() => scrollToSection("packages")}>
+              Packages
+            </Link>
+
+          {/* Accordion: Story */}
+          <div>
+            <button
+              onClick={() => toggleSection("story")}
+              className="flex items-center justify-between w-full text-lg font-medium text-gray-900 hover:text-cyan-600 menu-main"
+            >
+              <span className="menu-main">Story</span>
+              {openSection === "story" ? (
+                <ChevronUp className="w-5 h-5" />
+              ) : (
+                <ChevronDown className="w-5 h-5" />
+              )}
+            </button>
+            {openSection === "story" && (
+              <div className="mt-2 pl-4 space-y-2">
+                {storyItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="block text-gray-600 hover:text-cyan-600"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Accordion: Programs */}
+       <div>
+  <button
+    onClick={() => toggleSection("programs")}
+    className="flex items-center justify-between w-full text-lg font-medium text-gray-900 hover:text-cyan-600 menu-main"
+  >
+    <span className="menu-main">Programs</span>
+    {openSection === "programs" ? (
+      <ChevronUp className="w-5 h-5" />
+    ) : (
+      <ChevronDown className="w-5 h-5" />
+    )}
+  </button>
+
+  {openSection === "programs" && (
+    <div className="mt-2 pl-4 space-y-2">
+      {programItems.map((item) =>
+        item.href.startsWith("/") ? (
+          // Normal page link
+          <Link
+            key={item.href}
+            to={item.href}
+            className="block text-gray-600 hover:text-cyan-600"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {item.title}
+          </Link>
+        ) : (
+          // Scroll to section on Home
+          <button
+            key={item.href}
+            onClick={() => {
+              setMobileMenuOpen(false);
+              scrollToSection(item.href);
+            }}
+            className="block text-left text-gray-600 hover:text-cyan-600 w-full"
+          >
+            {item.title}
+          </button>
+        )
+      )}
     </div>
-  );
+  )}
+</div>
+
+          <Link
+            to="/contact"
+            className="text-lg font-medium text-gray-700 hover:text-cyan-600"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
+          <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
+                           text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
+                           shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+                           onClick={handleDemoClick}
+              >
+                Register for Demo
+              </Button>
+        </div>
+      </SheetContent>
+    </Sheet>
+        </div>
+      </header>
+    </>
+  )
 }
 
-export default Header;
+export default Header

@@ -13,11 +13,11 @@ export default function Registration() {
         {/* LEFT: Heading + Subheading */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
           <h2 className="text-5xl font-heebo font-extrabold mb-6 leading-snug">
-            Transform Pharma Training
-            <span className="block text-blue-300 font-rubik">Empower Your Workforce</span>
+           The Right Solution 
+            <span className="block text-blue-300 font-rubik">For Your Needs</span>
           </h2>
           <p className="text-lg leading-relaxed font-rubik text-blue-100">
-            Drive compliance, modernize learning, and stay competitive in the pharmaceutical industry.
+            Empower your team with customized training that fits your goals, culture, and budget. Partner with Nurture for a truly personalized, impactful learning experience.
             <span className="block mt-4 text-blue-300 font-bold text-2xl">
               Register for a FREE Demo
             </span>

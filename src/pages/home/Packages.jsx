@@ -1,218 +1,269 @@
-import { Badge } from "@/components/ui/badge";
+import { useState } from "react"
+import { CheckCircle, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { ArrowRight, CheckCircle, Star } from "lucide-react"
-import React from 'react'
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
-const PackagesData = [
+const packages = [
   {
+    id: "demo",
     name: "Demo",
     price: "Free",
-    description: "Perfect for individuals or small teams exploring Nurtue’s pharmacy learning tools.",
+    description: "Includes access for 2 users and 2 products",
+    popular: false,
     features: [
       {
         heading: "Pharmaceutical Knowledge",
-        points: ["Basic product knowledge", "Therapeutic area overview"],
+        points: ["Product Knowledge", "Therapeutic Area Knowledge"],
       },
       {
-        heading: "Sales & Communication",
-        points: ["Effective communication", "Presentation basics"],
-      },
-      {
-        heading: "Clinical Insights",
-        points: ["Understanding clinical data"],
-      },
-      {
-        heading: "Customer Engagement",
-        points: ["Intro to relationship building"],
-      },
-      {
-        heading: "Support",
-        points: ["Community forums & FAQs"],
+        heading: "In-Clinic Effectiveness",
+        points: [
+          "Effective Communication & Presentation skills",
+          "Basic Working Etiquettes",
+          "Roles and Responsibilities",
+        ],
       },
     ],
-    popular: false,
   },
   {
+    id: "basic",
     name: "Basic",
-    price: "₹1000/month",
-    description: "Essential features for small practices to grow with structured pharma learning.",
+    price: "₹1000",
+    tokenAmount: "Token Amount: ₹1000",
+    description: "Perfect for small teams getting started",
+    popular: false,
     features: [
       {
         heading: "Pharmaceutical Knowledge",
-        points: ["Product expertise", "Therapeutic knowledge"],
+        points: ["Product Knowledge", "Therapeutic Area Knowledge"],
       },
       {
-        heading: "Sales & Communication",
-        points: ["Sales cycle awareness", "Presentation skills"],
+        heading: "In-Clinic Effectiveness",
+        points: [
+          "Effective Communication & Presentation skills",
+          "Basic Working Etiquettes",
+          "Roles and Responsibilities",
+        ],
       },
       {
-        heading: "Clinical Insights",
-        points: ["Interpreting data", "Evidence-based selling"],
+        heading: "Understanding of Market and Competitor Landscape",
       },
       {
-        heading: "Market Awareness",
-        points: ["Competitor overview"],
-      },
-      {
-        heading: "Reporting",
-        points: ["Basic feedback tools"],
+        heading: "Effective Reporting and Feedback",
       },
     ],
-    popular: false,
   },
   {
+    id: "intermediate",
     name: "Intermediate",
-    price: "₹3000/month",
-    description: "Most popular plan — advanced tools for professionals to drive sales and customer engagement.",
+    price: "₹3000",
+    tokenAmount: "Token Amount: ₹3000",
+    description: "Most popular choice for growing businesses",
+    popular: true,
     features: [
       {
-        heading: "Pharmaceutical Knowledge",
-        points: ["In-depth product expertise", "Therapeutic specialization"],
+        heading: "Pharmaceutical & Therapeutic Knowledge",
+        points: ["Product Knowledge", "Therapeutic Area Understanding"],
       },
       {
-        heading: "Sales & Communication",
-        points: ["Advanced communication", "Sales cycle mastery"],
+        heading: "In-Clinic Effectiveness",
+        points: [
+          "Effective Communication & Presentation skills",
+          "Basic Working Etiquettes",
+          "Roles and Responsibilities",
+        ],
       },
       {
-        heading: "Customer Engagement",
-        points: ["Key account management", "Long-term partnerships"],
+        heading: "Clinical Data & Evidence-Based Selling",
+        points: ["Interpreting Clinical Data", "Engaging in Scientific Dialogue"],
       },
       {
-        heading: "Clinical Insights",
-        points: ["Data interpretation", "Scientific dialogue"],
+        heading: "Customer Relationship & Key Account Management",
+        points: [
+          "Building Long-Term Relationships",
+          "HCP Segmentation & KAM",
+          "Sales Cycle & Territory Management",
+        ],
       },
-      {
-        heading: "Market Awareness",
-        points: ["Competitive trends", "Territory management"],
-      },
-      {
-        heading: "Reporting",
-        points: ["Detailed tracking & feedback"],
-      },
+      { heading: "Market Awareness & Competitor Analysis" },
+      { heading: "Effective Reporting & Feedback Skills" },
     ],
-    popular: true,
   },
   {
+    id: "advance",
     name: "Advance",
-    price: "₹5000/month",
-    description: "Enterprise-grade solution with compliance, analytics, integrations, and premium support.",
+    price: "₹5000",
+    tokenAmount: "Token Amount: ₹5000",
+    description: "Enterprise solution for large organizations",
+    popular: false,
     features: [
       {
-        heading: "Enterprise Platform",
-        points: ["Unlimited users", "Multi-facility support", "Scalable infrastructure"],
+        heading: "Pharmaceutical & Therapeutic Knowledge",
+        points: ["Product Knowledge", "Therapeutic Area Expertise"],
       },
       {
-        heading: "Compliance Suite",
-        points: ["Regulatory automation", "Custom workflows", "Change management"],
+        heading: "In-Clinic Effectiveness",
+        points: [
+          "Effective Communication & Presentation skills",
+          "Basic Working Etiquettes",
+          "Roles and Responsibilities",
+        ],
       },
       {
-        heading: "Premium Support",
-        points: ["24/7 assistance", "Dedicated account manager", "On-site training"],
+        heading: "Clinical Data & Evidence-Based Selling",
+        points: ["Interpreting Clinical Data", "Engaging in Scientific Dialogue"],
       },
       {
-        heading: "Analytics",
-        points: ["Custom dashboards", "AI-powered insights", "Executive reports"],
+        heading: "Sales & Communication Mastery",
+        points: ["Effective Communication", "Presentation Skills"],
       },
       {
-        heading: "Security & Integrations",
-        points: ["Advanced protocols", "Unlimited integrations", "Custom APIs"],
+        heading: "Customer Relationship & Key Account Management",
+        points: [
+          "Building Long-Term Relationships",
+          "HCP Segmentation",
+          "Key Account Management (KAM)",
+          "Sales Cycle Management",
+        ],
       },
+      {
+        heading: "Soft Skills & Professional Development",
+        points: [
+          "Time & Territory Management",
+          "Conflict Resolution",
+          "Ethical Selling & Brand Representation",
+        ],
+      },
+      {
+        heading: "Handling Challenges & Negotiations",
+        points: ["Crisis Management", "Objection Handling & Negotiation Skills"],
+      },
+      {
+        heading: "Market Strategy & Competitive Edge",
+        points: ["Market Access Strategy", "Competitor Landscape Awareness"],
+      },
+      {
+        heading: "Continuous Learning & Team Development",
+        points: ["Regular Refresher Courses", "Motivational & Team-Building Activities"],
+      },
+      { heading: "Effective Reporting & Feedback" },
     ],
-    popular: false,
   },
-];
-
+]
 
 export default function Packages() {
+  const [expandedPackages, setExpandedPackages] = useState(new Set())
+
+  const togglePackage = (id) => {
+    const newExpanded = new Set(expandedPackages)
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id)
+    } else {
+      newExpanded.add(id)
+    }
+    setExpandedPackages(newExpanded)
+  }
+
   return (
-    <section id="packages" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-             <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm font-semibold px-4 py-1.5 mb-4">
-              Choose Your Perfect Plan
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
-            Our Comprehensive
+   <section className="py-20 bg-gray-50"  id ="packages">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
+            Meeting all your pharma training needs
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
+            Our Comprehensive{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              {" "}Packages
+              Packages
             </span>
           </h2>
-            <p className="text-lg md:text-xl font-rubik text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Choose the perfect solution for your healthcare practice with our tailored packages designed to meet
-              diverse professional needs.
-            </p>
-          </div>
+          <p className="text-lg md:text-xl font-rubik text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Choose the perfect solution for your healthcare practice with our tailored packages designed to meet
+            diverse professional needs.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {console.log(PackagesData)}
-            {PackagesData.map((pkg, index) => (
+        {/* Packages Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {packages.map((pkg) => {
+            const isExpanded = expandedPackages.has(pkg.id)
+
+            return (
               <Card
-                key={index}
-                className={`relative transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
-                  pkg.popular
-                    ? "border-2 border-cyan-500 shadow-xl scale-105 bg-gradient-to-b from-cyan-50 to-white"
-                    : "border border-gray-200 hover:border-gray-300"
+                key={pkg.id}
+                className={`relative h-[520px] flex flex-col transition-all duration-300 hover:shadow-xl border-[#f9f9f9] ${
+                  pkg.popular ? "ring-2 ring-cyan-500 shadow-lg scale-105" : "hover:scale-102"
                 }`}
               >
+                {/* Popular badge */}
                 {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="font-heebo bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-4 py-2 text-sm font-semibold shadow-lg">
-                      <Star className="w-3 h-3 mr-1" />
-                      Most Popular
-                    </Badge>
-                  </div>
+                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-cyan-600 text-white px-4 py-1 flex items-center gap-1">
+                    <Star className="h-3 w-3 fill-current" />
+                    Most Popular
+                  </Badge>
                 )}
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl font-heebo font-bold text-gray-900">{pkg.name}</CardTitle>
-                  <div className="space-y-2">
-                    <div className="text-2xl font-heebo font-bold text-cyan-600">{pkg.price}</div>
-                    <div className="text-sm  font-rubik text-gray-500 font-medium">{pkg.period}</div>
+
+                {/* Header */}
+                <CardHeader className="flex-none text-center pb-0">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                  <div className="mb-4">
+                    <div className="text-3xl font-bold text-cyan-600 mb-1">{pkg.price}</div>
+                    {pkg.tokenAmount && (
+                      <div className="text-sm text-cyan-600 font-medium">{pkg.tokenAmount}</div>
+                    )}
                   </div>
-                  <CardDescription className="font-rubik text-gray-600 font-medium">{pkg.description}</CardDescription>
+                  <p className="text-sm text-gray-600">{pkg.description}</p>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-5">
+
+                {/* Scrollable content */}
+                <CardContent className="flex-1 min-h-0 px-4 py-2">
+                  <div
+                    className={
+                      isExpanded
+                        ? "h-full overflow-auto pr-2"
+                        : "max-h-48 overflow-hidden pr-2"
+                    }
+                  >
                     {pkg.features.map((feature, idx) => (
-                      <div key={idx} className="space-y-2">
-                        <h4 className="font-bold text-sm text-gray-900 border-b border-gray-100 pb-2">
-                          {feature.heading}
-                        </h4>
-                        <ul className="space-y-1 ml-1">
-                          {feature.points.map((point, pointIdx) => (
-                            <li key={pointIdx} className="flex items-start gap-3">
-                              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-600 leading-relaxed">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div key={idx} className="mb-4">
+                        <h4 className="font-semibold text-gray-900 mb-2 text-sm">{feature.heading}</h4>
+                        {feature.points && (
+                          <ul className="space-y-2">
+                            {feature.points.map((point, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm">
+                                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-700">{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     ))}
                   </div>
-                  {/* <Button
-                    className={`w-full font-semibold transition-all duration-300 ${
-                      pkg.popular
-                        ? "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl"
-                        : "border-2 border-gray-300 text-gray-700 hover:border-cyan-500 hover:text-cyan-600 bg-white"
-                    }`}
-                    variant={pkg.popular ? "default" : "outline"}
-                  >
-                    Get Started
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button> */}
                 </CardContent>
+
+                {/* Footer button */}
+                <CardFooter className="pt-4 flex-none">
+                  <Button
+                    onClick={() => togglePackage(pkg.id)}
+                    variant={pkg.popular ? "default" : "outline"}
+                    className={`w-full transition-all duration-200 ${
+                      pkg.popular
+                        ? "bg-cyan-600 hover:bg-cyan-700 text-white"
+                        : "border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white"
+                    }`}
+                  >
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </Button>
+                </CardFooter>
               </Card>
-            ))}
-          </div>
+            )
+          })}
         </div>
-      </section>
+      </div>
+    </section>
   )
 }

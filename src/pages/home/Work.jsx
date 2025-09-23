@@ -13,6 +13,7 @@ import {
   BarChart3,
   TrendingUp,
 } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 
 export default function Work() {
   const [api, setApi] = useState(null)
@@ -58,6 +59,9 @@ export default function Work() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
+           <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md  px-4 py-1.5 mb-4">
+            From strategy to success - we nurture every step
+          </Badge>
           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
             How We
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">

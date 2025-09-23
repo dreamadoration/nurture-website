@@ -93,10 +93,8 @@ export default function Services() {
 
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div className="text-center mb-16">
-      <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 text-sm font-semibold shadow-lg font-rubik">
-        <Shield className="w-4 h-4 mr-2" />
-        Comprehensive Solutions
-      </Badge>
+       <Badge className="mb-4 font-heebo text-md bg-white/20 text-white hover:bg-white/30">Empower your talent to drive your business forward</Badge>
+
       <h2 className="text-4xl lg:text-5xl font-heebo font-bold text-white mb-6">
         Our Pharmaceutical Services
       </h2>

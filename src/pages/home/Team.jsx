@@ -1,35 +1,47 @@
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
+import { ArrowRight, ChevronRight} from "lucide-react";
 
 export default function Team() {
-  const teamData = [
+ const teamMembers = [
     {
-      name: "Mohd Imran Khan",
-      role: "Co-founder & Chief of Training and Client Strategy",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Male_Avatar.jpg", // Man's portrait
-      bio: "Imran leverages 15+ years in pharma sales to design training that drives real-world success.",
+      id: 1,
+       name: "Mohd Imran Khan",
+      designation: "Co-founder & Chief of Training and Client Strategy",
+      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      content: "With over 15 years of experience in pharmaceutical sales and team leadership, Imran co-founded Nurture to bridge the gap between academic learning and real-world performance.A Pharmacy graduate, he’s worked closely with medical reps, doctors, and pharma leaders,giving him deep insight into what it takes to thrive in the industry.",
+      linkedin: "https://linkedin.com/in/dr-michael-chen",
+      email: "m.chen@pharmaexcellence.com"
     },
     {
+      id: 2,
       name: "Noopur Sharma",
-      role: "Co-founder & Director – Program Delivery & Pharmacovigilance",
-      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg", // Woman's portrait
-      bio: "Noopur's 15+ years in pharma sales and marketing ensure our programs blend academic rigor with practical expertise.",
+      designation: "Co-founder & Director – Program Delivery & Pharmacovigilance",
+      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      content: "With over 13 years of experience in pharmaceutical sales, marketing, and pharmacovigilance, Noopur blends academic rigor with practical industry insight. A Master’s in Pharmacy, she brings a dynamic, real-world approach to training that connects deeply with learners.",
+      linkedin: "https://linkedin.com/in/dr-sarah-rodriguez",
+      email: "s.rodriguez@pharmaexcellence.com"
     },
     {
+      id: 3,
       name: "Anamika Tripathi",
-      role: "Co-founder & Director – Quality & Operations",
-      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg", // Woman's portrait
-      bio: "Anamika's 15 years in quality control and pharma sales guarantee our operations and programs are efficient and compliant.",
-    },
-  ]
+      designation: "Co-founder & Director – Quality & Operations",
+      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      content: "With 13 years of experience across quality control, teaching, and pharmaceutical sales, Anamika brings a rare 360-degree perspective to pharma training. A Master’s in Pharmacy and current PhD scholar, she combines academic depth with real-world insight.",
+      linkedin: "https://linkedin.com/in/james-thompson-pharma",
+      email: "j.thompson@pharmaexcellence.com"
+    }
+  ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-16">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm font-semibold px-4 py-1.5 mb-4">
-            Meet Our Experts
+          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
+            We are driven by our mission and fuelled by our team
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heebo font-bold text-gray-900 mb-4">
             Our Leadership Team
@@ -38,24 +50,73 @@ export default function Team() {
             Our team of experienced pharmaceutical professionals brings decades of combined expertise, dedicated to your success and growth.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamData.map((member, index) => (
-            <Card
-              key={index}
-              className="text-center group p-4 hover:shadow-xl transition-all duration-300 border-gray-100 border-2"
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teamMembers.map((member) => (
+            <Card 
+              key={member.id} 
+              className="overflow-hidden p-0 border-white hover:shadow-medical transition-all duration-300 hover:-translate-y-2 group"
             >
-              <CardContent className="pt-6 pb-4">
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="rounded-full w-full h-full object-cover shadow-lg group-hover:scale-105 transition-transform duration-300"
-                  />
+              {/* Image and Basic Info Row */}
+              <div className="p-6">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="relative">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-[#ddd] group-hover:border-[#1c398e] transition-colors"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all"></div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold  font-heebo text-card-foreground group-hover:text-primary transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary font-heebo font-medium text-sm">
+                      {member.designation}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold font-heebo text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-cyan-600 font-rubik font-medium mb-3">{member.role}</p>
-                <p className="text-sm text-gray-600 font-rubik leading-relaxed">{member.bio}</p>
-              </CardContent>
+
+                {/* Content */}
+                <p className="text-muted-foreground mb-4 font-rubik leading-relaxed">
+                  {member.content}
+                </p>
+
+                {/* Expanded Bio */}
+                {/* {expandedMember === member.id && (
+                  <div className="mb-4 p-4 bg-muted/50 rounded-lg border-l-4 border-l-primary">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {member.fullBio}
+                    </p>
+                  </div>
+                )} */}
+
+                {/* Actions */}
+                <div className="flex items-center justify-between">
+                  {/* <div className="flex space-x-2">
+                    {member.linkedin && (
+                      <Button variant="outline" size="sm" className="text-primary hover:bg-primary hover:text-white">
+                        <Linkedin className="h-4 w-4" />
+                      </Button>
+                    )}
+                    {member.email && (
+                      <Button variant="outline" size="sm" className="text-primary hover:bg-primary hover:text-white">
+                        <Mail className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div> */}
+                  
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => toggleExpanded(member.id)}
+                    className="text-[#1c398e] group-hover:bg-[#1c398e] cursor-pointer text-lg py-2 px-3 font-heebo group-hover:text-white transition-all"
+                  >
+                      Read More
+                       <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
             </Card>
           ))}
         </div>

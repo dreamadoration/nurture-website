@@ -5,21 +5,12 @@ import React from 'react'
 
 export default function TrainingSection() {
   return (
-    <section id="training" className="relative py-20 bg-gray-50 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://elite-themes.com/html/medicoz/images/icons/pattern-3.png"
-          alt="Modern pharmaceutical laboratory"
-          className="w-full h-full object-cover opacity-30"
-        />
-      </div>
-
+    <section id="training" className="relative py-20  overflow-hidden">
       {/* Foreground Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm font-semibold px-4 py-1.5 mb-4">
+          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
             Expert Training Module
           </Badge>
            <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
@@ -67,7 +58,7 @@ export default function TrainingSection() {
 
           {/* Sample Config */}
           <Card className="p-8 bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.06),_0px_16px_48px_rgba(0,0,0,0.08)] border border-gray-100 relative z-10 text-gray-900 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.1),_0px_24px_64px_rgba(0,0,0,0.12)]">
-            <h3 className="text-2xl font-bold mb-2 font-heebo text-center">Example: Intermediate Package</h3>
+            <h3 className="text-2xl font-bold mb-2 font-heebo text-center">Example: Basic Package</h3>
             
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
@@ -87,7 +78,7 @@ export default function TrainingSection() {
               </div>
               <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
                 <Calculator className="w-6 h-6 text-yellow-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-yellow-700 font-heebo">₹3,000</div>
+                <div className="text-2xl font-bold text-yellow-700 font-heebo">₹1,000</div>
                 <div className="text-xs text-gray-600 font-rubik">Token</div>
               </div>
             </div>
@@ -95,7 +86,7 @@ export default function TrainingSection() {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-gray-700 font-rubik">Token Amount:</span>
-                <span className="font-semibold text-cyan-600">₹3,000</span>
+                <span className="font-semibold text-cyan-600">₹1,000</span>
               </div>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-gray-700 font-rubik">Days (2 × ₹2,500):</span>
@@ -112,7 +103,7 @@ export default function TrainingSection() {
               <div className="border-t-2 border-gray-200 pt-4 mt-4">
                 <div className="flex justify-between items-center text-xl font-bold">
                   <span className="text-gray-900 font-heebo">Total Cost:</span>
-                  <span className="text-cyan-600 font-heebo">₹11,600</span>
+                  <span className="text-cyan-600 font-heebo">₹9,600</span>
                 </div>
               </div>
             </div>
