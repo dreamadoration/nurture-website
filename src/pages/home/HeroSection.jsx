@@ -23,12 +23,12 @@ export default function HeroSection() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center py-20 md:min-h-screen">
           <div className="max-w-3xl space-y-8 text-white">
             <div className="flex items-center gap-3">
-              <Badge className="bg-white/20 text-white font-rubik hover:bg-white/30 px-4 py-2 text-md  backdrop-blur-sm">
+              <Badge className="bg-white/20 text-sm md:text-lg text-white font-rubik hover:bg-white/30 px-4 py-2   backdrop-blur-sm">
                 <Star className="w-4 h-4 mr-2" />
                 Empower your talent to drive your business forward
               </Badge>
             </div>
-            <h1 className="text-5xl lg:text-6xl font-heebo font-bold leading-tight">
+            <h1 className="text-4xl lg:text-6xl font-heebo font-bold leading-tight">
              Advancing Pharma Workforce with Expert 
               <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent block">
                 Training Solutions
@@ -39,8 +39,7 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
-                size="lg"
-                className="bg-white text-cyan-900 hover:bg-cyan-50 px-10 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                className="bg-white sm:w-[200px] text-cyan-900 hover:bg-cyan-50 md:px-10 md:py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               >
                 Request for Demo
                 <ArrowRight className="ml-3 w-5 h-5" />

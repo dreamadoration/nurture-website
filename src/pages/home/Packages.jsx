@@ -32,7 +32,6 @@ const packages = [
     name: "Basic",
     price: "₹1000",
     tokenAmount: "Token Amount: ₹1000",
-    description: "Perfect for small teams getting started",
     popular: false,
     features: [
       {
@@ -60,7 +59,7 @@ const packages = [
     name: "Intermediate",
     price: "₹3000",
     tokenAmount: "Token Amount: ₹3000",
-    description: "Most popular choice for growing businesses",
+   
     popular: true,
     features: [
       {
@@ -96,7 +95,6 @@ const packages = [
     name: "Advance",
     price: "₹5000",
     tokenAmount: "Token Amount: ₹5000",
-    description: "Enterprise solution for large organizations",
     popular: false,
     features: [
       {
@@ -167,7 +165,7 @@ export default function Packages() {
   }
 
   return (
-   <section className="py-20 bg-gray-50"  id ="packages">
+   <section className="py-10 md:py-20 bg-gray-50"  id ="packages">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-16">
@@ -187,15 +185,15 @@ export default function Packages() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
           {packages.map((pkg) => {
             const isExpanded = expandedPackages.has(pkg.id)
 
             return (
               <Card
                 key={pkg.id}
-                className={`relative h-[520px] flex flex-col transition-all duration-300 hover:shadow-xl border-[#f9f9f9] ${
-                  pkg.popular ? "ring-2 ring-cyan-500 shadow-lg scale-105" : "hover:scale-102"
+                className={`relative h-[520px] flex flex-col transition-all sm:pt-4 duration-300 hover:shadow-xl border-[#ddd] ${
+                  pkg.popular ? "ring-2 sm:pt-4 ring-cyan-500 shadow-lg scale-105" : "hover:scale-102"
                 }`}
               >
                 {/* Popular badge */}
@@ -208,14 +206,17 @@ export default function Packages() {
 
                 {/* Header */}
                 <CardHeader className="flex-none text-center pb-0">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                  <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-0">{pkg.name}</h3>
+                  <div className="mb-0">
                     <div className="text-3xl font-bold text-cyan-600 mb-1">{pkg.price}</div>
                     {pkg.tokenAmount && (
                       <div className="text-sm text-cyan-600 font-medium">{pkg.tokenAmount}</div>
                     )}
                   </div>
-                  <p className="text-sm text-gray-600">{pkg.description}</p>
+                  {pkg.description && (
+             <p className="text-sm text-gray-600">{pkg.description}</p>
+                  )}
+                 
                 </CardHeader>
 
                 {/* Scrollable content */}
@@ -224,7 +225,7 @@ export default function Packages() {
                     className={
                       isExpanded
                         ? "h-full overflow-auto pr-2"
-                        : "max-h-48 overflow-hidden pr-2"
+                        : "max-h-68 overflow-hidden pr-2"
                     }
                   >
                     {pkg.features.map((feature, idx) => (

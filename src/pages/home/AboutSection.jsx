@@ -27,7 +27,7 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left column - Enhanced introduction */}
           <div className="space-y-8">
-             <Badge className="mb-4 font-heebo text-md bg-blue-100 text-blue-800 hover:bg-blue-200">We exist to spark change, empower minds, and build excellence</Badge>
+             <Badge className="mb-4 font-heebo text-sm md:text-lg bg-blue-100 text-blue-800 hover:bg-blue-200">We exist to spark change, empower minds, and build excellence</Badge>
              <h3 className="text-4xl font-bold font-heebo text-slate-900 leading-tight">
               Welcome to NURTURE<br/>
               <span className=" text-md font-heebo text-blue-600"> Your Partner in Pharma Excellence</span>
