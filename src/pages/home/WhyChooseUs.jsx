@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
+    <section className="py-8 md:py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]" />
 
       <div className="container mx-auto px-4 relative">

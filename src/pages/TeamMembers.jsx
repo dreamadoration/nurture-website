@@ -8,7 +8,7 @@ export default function TeamMember() {
   const teamMembers = [
     {
       name: "Mohd Imran Khan",
-      position: "Co-founder &amp; Chief of training Strategy and Client Success",
+      position: "Co-founder & Chief of training Strategy and Client Success",
       image: member1,
       bio: "With over 15 years of experience in pharmaceutical sales and team leadership, Imran co-founded Nurture to bridge the gap between academic learning and real-world performance. A Pharmacy graduate, he’s worked closely with medical reps, doctors, and pharma leaders, giving him deep insight into what it takes to thrive in the industry.",
       bio1: "Imran is passionate about mentorship and practical training, having guided countless early-career professionals. At Nurture, he designs programs that blend real-world challenges with structured learning. Outside of work, he champions continuous learning, ethical selling, and strong human connections - the very principles Nurture is built on."
@@ -16,7 +16,7 @@ export default function TeamMember() {
     },
         {
       name: "Noopur Sharma",
-      position: "Co-founder &amp; Director – Program Delivery & Pharmacovigilance",
+      position: "Co-founder & Director – Program Delivery & Pharmacovigilance",
       image: member3,
       bio: "With over 13 years of experience in pharmaceutical sales, marketing, and pharmacovigilance, Noopur blends academic rigor with practical industry insight. A Master’s in Pharmacy, she brings a dynamic, real-world approach to training that connects deeply with learners.",
       bio1: "At Nurture, Noopur leads the design and delivery of programs that prepare pharma professionals for the regulatory and commercial demands of the field. Her passion lies in strengthening knowledge around compliance and pharmacovigilance—critical yet often overlooked areas.",
@@ -70,7 +70,7 @@ export default function TeamMember() {
                     <img
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
-                      className="w-full h-64 object-cover rounded-lg mb-2"
+                      className="w-full h-full lg:h-64 object-cover rounded-lg mb-2"
                     />
                   </div>
                 </div>

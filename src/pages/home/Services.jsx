@@ -80,7 +80,7 @@ const services = [
                 ]
 export default function Services() {
   return (
-   <section id="services" className="py-24 bg-gradient-to-br from-blue-950 via-blue-900 to-cyan-950 relative overflow-hidden">
+   <section id="services" className="py-10 md:py-24 bg-gradient-to-br from-blue-950 via-blue-900 to-cyan-950 relative overflow-hidden">
   {/* Decorative subtle pattern */}
   <div className="absolute inset-0 opacity-10">
     <div
@@ -92,8 +92,8 @@ export default function Services() {
   </div>
 
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="text-center mb-16">
-       <Badge className="mb-4 font-heebo text-md bg-white/20 text-white hover:bg-white/30">Empower your talent to drive your business forward</Badge>
+    <div className="text-center mb-8 md:mb-16">
+       <Badge className="mb-4 w-full md:w-auto font-heebo text-sm md:text-md bg-white/20 text-white hover:bg-white/30">Empower your talent to drive your business forward</Badge>
 
       <h2 className="text-4xl lg:text-5xl font-heebo font-bold text-white mb-6">
         Our Pharmaceutical Services

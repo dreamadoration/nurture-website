@@ -1,115 +1,209 @@
-import { Badge } from '@/components/ui/badge'
-import { Card } from '@/components/ui/card'
-import { Calculator, Calendar, Package, Users } from 'lucide-react'
-import React from 'react'
+import { useState } from "react"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, Package, Users, Coins } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-export default function TrainingSection() {
+const tokenPackages = [
+  { id: "basic", name: "Basic", amount: 1000 },
+  { id: "intermediate", name: "Intermediate", amount: 3000 },
+  { id: "advance", name: "Advance", amount: 5000 },
+]
+
+export default function TrainingSection({ bgColor = "bg-gray-50" }) {
+  const [days, setDays] = useState("")
+  const [products, setProducts] = useState("")
+  const [members, setMembers] = useState("")
+  const [selectedPackage, setSelectedPackage] = useState("basic")
+  const [calculated, setCalculated] = useState(false)
+
+  const PRICE_PER_DAY = 2500
+  const PRICE_PER_PRODUCT = 200
+  const PRICE_PER_MEMBER = 200
+
+  const selectedTokenPackage = tokenPackages.find((pkg) => pkg.id === selectedPackage)
+
+  const numDays = Number(days) || 0
+  const numProducts = Number(products) || 0
+  const numMembers = Number(members) || 0
+
+  const tokenCost = selectedTokenPackage?.amount || 0
+  const daysCost = numDays * PRICE_PER_DAY
+  const productsCost = numProducts * PRICE_PER_PRODUCT
+  const membersCost = numMembers * PRICE_PER_MEMBER
+  const totalCost = tokenCost + daysCost + productsCost + membersCost
+
+  const handleCalculate = () => {
+    setCalculated(true)
+  }
+
   return (
-    <section id="training" className="relative py-20  overflow-hidden">
-      {/* Foreground Content */}
+    <section id="training" className={`relative py-8 md:py-12 overflow-hidden ${bgColor}`}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
+        <div className="text-center mb-4 md:mb-8">
+          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
             Expert Training Module
           </Badge>
-           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
-            Customized Training
+          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-4 text-gray-900">
+            Customized Training{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              {" "}Solutions
+              Solutions
             </span>
           </h2>
-          <p className="text-lg md:text-xl font-rubik text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Tailor your training packages according to your business needs and requirements.
-            Each package includes a fixed token amount plus DPM-based costs for maximum flexibility.
+          <p className="text-lg font-rubik text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Tailor your training packages according to your business needs and requirements. Each package includes a fixed token amount plus DPM-based costs for maximum flexibility.
           </p>
         </div>
 
-        {/* Content Grid */}
-     <div className="grid md:grid-cols-2 gap-8 mb-6">
-          {/* Formula Box */}
-          <Card className="p-8 bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.06),_0px_16px_48px_rgba(0,0,0,0.08)] border border-gray-100 relative z-10 text-gray-900 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.1),_0px_24px_64px_rgba(0,0,0,0.12)]">
-            <h3 className="text-2xl font-bold mb-2 font-heebo text-center">Total Cost Calculation</h3>
-            <div className="bg-gray-100 p-6 rounded-xl border-l-4 border-cyan-500">
-              <div className="text-xl font-mono text-cyan-700 font-bold mb-2">
-                Token Amount + DPM Cost
+        <div className="grid lg:grid-cols-2 gap-8 pt-8">
+          {/* Left: Inputs */}
+          <Card className="p-8 bg-white shadow-lg border border-gray-100 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-xl font-heebo font-semibold text-gray-800">
+                Customize Your Training Plan
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Token Package */}
+              <div className="space-y-2">
+                <Label className="text-md font-medium flex items-center gap-2">
+                  <Coins className="h-4 w-4 text-orange-500" />
+                  Token Package
+                </Label>
+                <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                  <SelectTrigger className="w-full p-6 text-md border border-gray-300 rounded-lg bg-white text-gray-700 focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400">
+                    <SelectValue placeholder="Choose a package" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    {tokenPackages.map((pkg) => (
+                      <SelectItem key={pkg.id} value={pkg.id}>
+                        <div className="flex items-center justify-between w-full">
+                          <span className="font-medium">{pkg.name}</span>
+                          <Badge variant="secondary" className="text-md rounded-full bg-gray-100 text-gray-800">
+                            ₹{pkg.amount.toLocaleString()}
+                          </Badge>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-              <p className="text-sm text-gray-600 mb-4">Where DPM is calculated as:</p>
-              <div className="text-lg font-semibold text-blue-700">
-                (Days × ₹2,500) + (Products × ₹200) + (Members × ₹200)
-              </div>
-            </div>
 
-            <div className="mt-8 space-y-4">
-              <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                <span className="text-gray-700 font-rubik flex items-center gap-2"><Calendar className="w-5 h-5 text-purple-600"/> Days Training</span>
-                <span className="font-semibold text-gray-900">₹2,500 per day</span>
+              {/* Days */}
+              <div className="space-y-2">
+                <Label className="text-md font-medium flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-purple-500" />
+                  Training Days
+                </Label>
+                <Input
+                  type="text"
+                  value={days}
+                  onChange={(e) => setDays(e.target.value)}
+                  placeholder="Enter number of days"
+                  className={`w-full p-6 text-md border border-gray-300 rounded-lg focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 ${!days ? "text-gray-400" : "text-gray-800"}`}
+                />
               </div>
-              <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                <span className="text-gray-700 font-rubik flex items-center gap-2"><Package className="w-5 h-5 text-red-600"/> Products Covered</span>
-                <span className="font-semibold text-gray-900">₹200 per product</span>
+
+              {/* Products */}
+              <div className="space-y-2">
+                <Label className="text-md font-medium flex items-center gap-2">
+                  <Package className="h-4 w-4 text-pink-500" />
+                  Products Covered
+                </Label>
+                <Input
+                  type="text"
+                  value={products}
+                  onChange={(e) => setProducts(e.target.value)}
+                  placeholder="Enter number of products"
+                  className={`w-full p-6 text-md border border-gray-300 rounded-lg focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 ${!products ? "text-gray-400" : "text-gray-800"}`}
+                />
               </div>
-              <div className="flex items-center justify-between py-2">
-                <span className="text-gray-700 font-rubik flex items-center gap-2"><Users className="w-5 h-5 text-indigo-600"/> Team Members</span>
-                <span className="font-semibold text-gray-900">₹200 per member</span>
+
+              {/* Members */}
+              <div className="space-y-2">
+                <Label className="text-md font-medium flex items-center gap-2">
+                  <Users className="h-4 w-4 text-green-500" />
+                  Team Members
+                </Label>
+                <Input
+                  type="text"
+                  value={members}
+                  onChange={(e) => setMembers(e.target.value)}
+                  placeholder="Enter number of members"
+                  className={`w-full p-6 text-md border border-gray-300 rounded-lg focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 ${!members ? "text-gray-400" : "text-gray-800"}`}
+                />
               </div>
-            </div>
+
+              {/* Calculate Button */}
+              <div className="pt-2">
+                <Button
+                  onClick={handleCalculate}
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white cursor-pointer font-semibold text-lg py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  Calculate Cost
+                </Button>
+              </div>
+            </CardContent>
           </Card>
 
-          {/* Sample Config */}
-          <Card className="p-8 bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.06),_0px_16px_48px_rgba(0,0,0,0.08)] border border-gray-100 relative z-10 text-gray-900 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.1),_0px_24px_64px_rgba(0,0,0,0.12)]">
-            <h3 className="text-2xl font-bold mb-2 font-heebo text-center">Example: Basic Package</h3>
-            
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
-                <Calendar className="w-6 h-6 text-cyan-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-cyan-700 font-heebo">2</div>
-                <div className="text-xs text-gray-600 font-rubik">Days</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
-                <Package className="w-6 h-6 text-pink-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-pink-700 font-heebo">8</div>
-                <div className="text-xs text-gray-600 font-rubik">Products</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
-                <Users className="w-6 h-6 text-purple-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-purple-700 font-heebo">10</div>
-                <div className="text-xs text-gray-600 font-rubik">Members</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-gray-50 shadow-sm border border-gray-200">
-                <Calculator className="w-6 h-6 text-yellow-600 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-yellow-700 font-heebo">₹1,000</div>
-                <div className="text-xs text-gray-600 font-rubik">Token</div>
-              </div>
-            </div>
+          {/* Right: Breakdown */}
+          <Card className="p-8 bg-white shadow-lg border border-gray-100 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-xl font-heebo font-semibold text-gray-800">
+                {calculated ? "Cost Breakdown" : "Awaiting Calculation"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!calculated ? (
+                <p className="text-gray-500 font-rubik text-lg mt-8 text-center">
+                  Enter your details and click <span className="font-semibold text-blue-600">Calculate Cost</span> to see your estimate.
+                </p>
+              ) : (
+                <>
+                  <div className="mb-4 rounded-md border border-dashed border-gray-300 bg-gray-50 p-3 text-md leading-6 text-gray-700 font-rubik">
+                    <span className="font-medium text-gray-900">Pricing Formula:</span>{" "}
+                    Token + (Days × ₹2,500) + (Products × ₹200) + (Members × ₹200)
+                  </div>
 
-            <div className="space-y-3 mb-6">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-700 font-rubik">Token Amount:</span>
-                <span className="font-semibold text-cyan-600">₹1,000</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-700 font-rubik">Days (2 × ₹2,500):</span>
-                <span className="font-semibold text-cyan-600">₹5,000</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-700 font-rubik">Products (8 × ₹200):</span>
-                <span className="font-semibold text-pink-600">₹1,600</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-700 font-rubik">Members (10 × ₹200):</span>
-                <span className="font-semibold text-purple-600">₹2,000</span>
-              </div>
-              <div className="border-t-2 border-gray-200 pt-4 mt-4">
-                <div className="flex justify-between items-center text-xl font-bold">
-                  <span className="text-gray-900 font-heebo">Total Cost:</span>
-                  <span className="text-cyan-600 font-heebo">₹9,600</span>
-                </div>
-              </div>
-            </div>
+                  <div className="space-y-3 text-lg font-rubik text-gray-800">
+                    <div className="flex justify-between">
+                      <span>Token ({selectedTokenPackage?.name})</span>
+                      <span className="font-medium">₹{tokenCost.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Days ({numDays} × ₹{PRICE_PER_DAY.toLocaleString()})</span>
+                      <span className="font-medium">₹{daysCost.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Products ({numProducts} × ₹{PRICE_PER_PRODUCT})</span>
+                      <span className="font-medium">₹{productsCost.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Members ({numMembers} × ₹{PRICE_PER_MEMBER})</span>
+                      <span className="font-medium">₹{membersCost.toLocaleString()}</span>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-300 font-heebo mt-4 pt-6">
+                    <div className="flex justify-between text-lg font-bold">
+                      <span>Total Cost:</span>
+                      <span className="text-gray-900">₹{totalCost.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </CardContent>
           </Card>
         </div>
-
       </div>
     </section>
   )

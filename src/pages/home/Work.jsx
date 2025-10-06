@@ -47,7 +47,7 @@ export default function Work() {
   return (
     <section
       id="how-we-work"
-      className="relative py-24 bg-gray-50 text-gray-900"
+      className="relative py-10 md:py-24 bg-gray-50 text-gray-900"
     //   style={{
     //     backgroundImage: "url('https://placehold.co/1920x1080/f3f4f6/000000?text=Light+Geometric+Pattern')",
     //     backgroundSize: "cover",
@@ -58,11 +58,11 @@ export default function Work() {
       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-           <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md  px-4 py-1.5 mb-4">
+        <div className="text-center mb-4 md:mb-16">
+           <Badge className="w-full md:w-auto bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md  px-4 py-1.5 mb-4">
             From strategy to success - we nurture every step
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-2 md:mb-6 text-gray-900">
             How We
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               {" "}Work

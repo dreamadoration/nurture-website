@@ -3,10 +3,13 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { useNavigate } from "react-router-dom"
 
 export default function AboutSection() {
+
+  const navigate = useNavigate();
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50 relative overflow-hidden">
+    <section className="py-10 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50 relative overflow-hidden">
       <div className="absolute inset-0">
         {/* Animated floating elements */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl animate-pulse"></div>
@@ -27,8 +30,10 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left column - Enhanced introduction */}
           <div className="space-y-8">
-             <Badge className="mb-4 font-heebo text-sm md:text-lg bg-blue-100 text-blue-800 hover:bg-blue-200">We exist to spark change, empower minds, and build excellence</Badge>
-             <h3 className="text-4xl font-bold font-heebo text-slate-900 leading-tight">
+<Badge className="mb-4 w-full md:w-auto font-heebo text-sm md:text-lg bg-blue-100 text-blue-800 hover:bg-blue-200 break-words whitespace-normal text-center">
+  We exist to spark change, empower minds, and build excellence
+</Badge>
+            <h3 className="text-4xl font-bold font-heebo text-slate-900 leading-tight">
               Welcome to NURTURE<br/>
               <span className=" text-md font-heebo text-blue-600"> Your Partner in Pharma Excellence</span>
             </h3>
@@ -47,6 +52,7 @@ export default function AboutSection() {
                 className="bg-gradient-to-r yext-md from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
                         text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
                         shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+                  onClick = {() => navigate("/about")}
             >
                Read More About Us
             </Button>

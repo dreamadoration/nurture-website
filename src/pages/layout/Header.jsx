@@ -1,11 +1,12 @@
-"use client"
-
+import React from "react"
 import { useEffect, useState } from "react"
 import { ChevronDown, ChevronUp, Facebook, Instagram, Linkedin, Mail, Menu, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import logoImage from "../../assets/images/logo.png"
+
 
 const storyItems = [
   { title: "About Us", href: "/about" },
@@ -95,10 +96,12 @@ export function Header() {
 
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-[#ddd] bg-white/95 backdrop-blur shadow-sm">
-        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4">
+        <div className="max-w-7xl mx-auto flex h-20 items-center justify-between px-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-      <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Nurture</a>
+      <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+     <img className="w-[90px]" src={logoImage} alt = "Nurture" />
+      </a>
 
           </Link>
 

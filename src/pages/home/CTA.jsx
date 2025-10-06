@@ -1,10 +1,13 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CTA() {
+
+  const navigate = useNavigate();
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
+    <section className="py-10 md:py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="absolute top-16 left-16 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
@@ -17,7 +20,7 @@ export default function CTA() {
           
           {/* Left: Heading + Subheading */}
           <div className="lg:col-span-2 text-left">
-       <h2 className="text-5xl lg:text-5xl font-heebo font-extrabold text-white leading-tight">
+       <h2 className="text-4xl md:text-5xl lg:text-5xl font-heebo font-extrabold text-white leading-tight">
 Meeting all your pharma training needs
             </h2>
             <p className="text-lg text-blue-200 mt-3">
@@ -33,6 +36,7 @@ industry experts and designed to ensure effective, practical learning.
               className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
                          text-white font-bold px-10 py-5 text-lg rounded-xl 
                          shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+              onClick = {() => navigate("/contact")}
             >
               Contact Us
               <Phone className="ml-3 w-6 h-6" />

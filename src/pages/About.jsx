@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Heart, Lightbulb, Target, Users } from "lucide-react"
-import memberImage from  "../assets/images/about-image.png"
+import memberImage from  "../assets/images/member1.jpg"
 import existImage from  "../assets/images/whyWeexist.jpg"
 import CTA from "./home/CTA"
 
@@ -11,14 +11,14 @@ export default function About() {
       <section className="relative h-[50vh] md:h-[70vh]  bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 px-8"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-10">
-          <Badge className="mb-6 text-xs sm:text-sm md:text-base font-medium bg-white/20 text-white border border-white/30 px-3 sm:px-4 py-1 rounded-full text-center break-words max-w-full">
+          <Badge className="mb-4 w-full md:w-auto font-heebo text-sm md:text-lg bg-white/20 text-white hover:bg-blue-200 break-words whitespace-normal text-center">
   We exist to spark change, empower minds, and build excellence
 </Badge>
 
-          <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
             Transforming Lives Through Learning
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto font-rubik text-white/90 leading-relaxed">
+          <p className="text-md md:text-xl font-rubik text-white/90 leading-relaxed">
             Your Partner in Pharma Excellence – Driving success through specialized training, 
             strategic consulting, and innovative solutions.
           </p>
@@ -26,7 +26,7 @@ export default function About() {
       </section>
 
       {/* Founder Message */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-10 md:py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function About() {
       </section>
 
       {/* Our Vision */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-10 md:py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10 font-heebo">Our Vision</h2>
           <p className="text-gray-600 max-w-3xl font-rubik mx-auto mb-12">

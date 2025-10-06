@@ -32,7 +32,7 @@ const HowToScan = () => {
   ];
 
   return (
-    <section id="training" className="relative py-20 bg-gray-50 overflow-hidden">
+    <section id="training" className="relative py-10 md:py-20 bg-gray-50 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <img
@@ -43,12 +43,12 @@ const HowToScan = () => {
       </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10 ">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 font-heebo text-md bg-blue-100 text-blue-800 hover:bg-blue-200">
+        <div className="text-center mb-8 md:mb-16">
+          <Badge className=" md:w-auto text-sm mb-4 font-heebo md:text-md bg-blue-100 text-blue-800 hover:bg-blue-200">
             Scan QR Code
           </Badge>
 
-          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-3 md:mb-6 text-gray-900">
             Complete Your Payment{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
               in One Scan

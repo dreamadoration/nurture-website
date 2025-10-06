@@ -3,14 +3,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
 import { ArrowRight, ChevronRight} from "lucide-react";
+import member1 from "../../assets/images/member1.jpg"
+import member2 from "../../assets/images/member2.jpg"
+import member3 from "../../assets/images/member3.jpg"
+import { useNavigate } from 'react-router-dom';
 
 export default function Team() {
+  const navigate = useNavigate();
  const teamMembers = [
     {
       id: 1,
        name: "Mohd Imran Khan",
       designation: "Co-founder & Chief of Training and Client Strategy",
-      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      image: member1,
       content: "With over 15 years of experience in pharmaceutical sales and team leadership, Imran co-founded Nurture to bridge the gap between academic learning and real-world performance.A Pharmacy graduate, he’s worked closely with medical reps, doctors, and pharma leaders,giving him deep insight into what it takes to thrive in the industry.",
       linkedin: "https://linkedin.com/in/dr-michael-chen",
       email: "m.chen@pharmaexcellence.com"
@@ -19,7 +24,7 @@ export default function Team() {
       id: 2,
       name: "Noopur Sharma",
       designation: "Co-founder & Director – Program Delivery & Pharmacovigilance",
-      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      image:member3,
       content: "With over 13 years of experience in pharmaceutical sales, marketing, and pharmacovigilance, Noopur blends academic rigor with practical industry insight. A Master’s in Pharmacy, she brings a dynamic, real-world approach to training that connects deeply with learners.",
       linkedin: "https://linkedin.com/in/dr-sarah-rodriguez",
       email: "s.rodriguez@pharmaexcellence.com"
@@ -28,7 +33,7 @@ export default function Team() {
       id: 3,
       name: "Anamika Tripathi",
       designation: "Co-founder & Director – Quality & Operations",
-      image: "https://static.vecteezy.com/system/resources/previews/024/766/959/non_2x/default-female-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg",
+      image: member2,
       content: "With 13 years of experience across quality control, teaching, and pharmaceutical sales, Anamika brings a rare 360-degree perspective to pharma training. A Master’s in Pharmacy and current PhD scholar, she combines academic depth with real-world insight.",
       linkedin: "https://linkedin.com/in/james-thompson-pharma",
       email: "j.thompson@pharmaexcellence.com"
@@ -36,11 +41,11 @@ export default function Team() {
   ];
 
   return (
-     <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
+     <section className="py-10 md:py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-16">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
+          <Badge className="bg-purple-100 w-full md:w-auto text-sm text-purple-800 font-heebo hover:bg-purple-200 md:text-md px-4 py-1.5 mb-4">
             We are driven by our mission and fuelled by our team
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heebo font-bold text-gray-900 mb-4">
@@ -109,7 +114,7 @@ export default function Team() {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    onClick={() => toggleExpanded(member.id)}
+                    onClick={() => navigate("/team")}
                     className="text-[#1c398e] group-hover:bg-[#1c398e] cursor-pointer text-lg py-2 px-3 font-heebo group-hover:text-white transition-all"
                   >
                       Read More

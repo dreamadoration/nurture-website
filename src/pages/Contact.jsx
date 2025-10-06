@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative  h-[50vh] md:h-[60vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] md:h-[60vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
           <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-full">
@@ -72,7 +72,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Form & Map (Full Width Section) */}
+      {/* Contact Form & Map */}
       <section className="w-full">
         <div className="grid lg:grid-cols-2 min-h-[600px]">
           {/* Left - Form with Blue BG */}
@@ -83,12 +83,33 @@ export default function Contact() {
                 Fill out the form and our team will get back to you within 24 hours.
               </p>
 
-              <form className="space-y-6">
-                <Input id="name" placeholder="Your Name *" className="h-12 bg-white text-black border-[#ddd]" />
-                <Input id="email" type="email" placeholder="Your Email *" className="h-12 bg-white border-[#ddd] text-black" />
-                <Input id="subject" placeholder="Subject *" className="h-12 bg-white text-black border-[#ddd]" />
-                <Textarea id="message" rows={5} placeholder="Your Message *" className="bg-white text-black border-[#ddd]" />
-                <Button size="lg" className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+              <form className="space-y-5">
+                <Input
+                  id="name"
+                  placeholder="Your Name *"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Your Email *"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                />
+                <Input
+                  id="subject"
+                  placeholder="Subject *"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                />
+                <Textarea
+                  id="message"
+                  rows={5}
+                  placeholder="Your Message *"
+                  className="bg-white/95 text-black border border-gray-300 rounded-xl px-4 py-3 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                />
+                <Button
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-xl py-6 text-lg transition-all shadow-lg hover:shadow-xl"
+                >
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
                 </Button>

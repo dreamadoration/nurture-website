@@ -8,11 +8,11 @@ export default function Registration() {
       id="registration"
       className="relative w-full bg-blue-900 text-white"
     >
-      <div className="relative w-full px-6 py-20 lg:px-20 flex flex-col lg:flex-row gap-12 lg:gap-20">
+      <div className="relative w-full py-10 px-6 md:py-20 lg:px-20 flex flex-col lg:flex-row gap-12 lg:gap-20">
         
         {/* LEFT: Heading + Subheading */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <h2 className="text-5xl font-heebo font-extrabold mb-6 leading-snug">
+          <h2 className="text-4xl md:text-5xl font-heebo font-extrabold mb-6 leading-snug">
            The Right Solution 
             <span className="block text-blue-300 font-rubik">For Your Needs</span>
           </h2>
@@ -53,17 +53,6 @@ export default function Registration() {
                 
                 <InputField placeholder="Phone Number" type="tel" />
                 <InputField placeholder="Company Name" />
-
-                <select
-                  className="w-full bg-transparent border-b border-blue-300 text-white py-2 focus:ring-0 focus:border-blue-400 transition-colors duration-200"
-                >
-                  <option value="" className="bg-blue-800 text-white">Select a package</option>
-                  <option value="demo" className="bg-blue-800 text-white">Demo Package</option>
-                  <option value="basic" className="bg-blue-800 text-white">Basic Package</option>
-                  <option value="intermediate" className="bg-blue-800 text-white">Intermediate Package</option>
-                  <option value="advance" className="bg-blue-800 text-white">Advance Package</option>
-                  <option value="custom" className="bg-blue-800 text-white">Customized Training</option>
-                </select>
 
                 <Button
                   className="bg-gradient-to-r font-rubik from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500

@@ -31,7 +31,7 @@ const packages = [
     id: "basic",
     name: "Basic",
     price: "₹1000",
-    tokenAmount: "Token Amount: ₹1000",
+    tokenAmount: "Token Amount",
     popular: false,
     features: [
       {
@@ -58,7 +58,7 @@ const packages = [
     id: "intermediate",
     name: "Intermediate",
     price: "₹3000",
-    tokenAmount: "Token Amount: ₹3000",
+    tokenAmount: "Token Amount",
    
     popular: true,
     features: [
@@ -94,7 +94,7 @@ const packages = [
     id: "advance",
     name: "Advance",
     price: "₹5000",
-    tokenAmount: "Token Amount: ₹5000",
+    tokenAmount: "Token Amount",
     popular: false,
     features: [
       {
@@ -168,8 +168,8 @@ export default function Packages() {
    <section className="py-10 md:py-20 bg-gray-50"  id ="packages">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-md px-4 py-1.5 mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <Badge className="-full md:w-auto bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
             Meeting all your pharma training needs
           </Badge>
           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
@@ -208,13 +208,14 @@ export default function Packages() {
                 <CardHeader className="flex-none text-center pb-0">
                   <h3 className="text-2xl font-bold text-gray-900 mb-0">{pkg.name}</h3>
                   <div className="mb-0">
-                    <div className="text-3xl font-bold text-cyan-600 mb-1">{pkg.price}</div>
-                    {pkg.tokenAmount && (
+                      {pkg.tokenAmount && (
                       <div className="text-sm text-cyan-600 font-medium">{pkg.tokenAmount}</div>
                     )}
+                    <div className="text-3xl font-bold text-cyan-600">{pkg.price}</div>
+      
                   </div>
                   {pkg.description && (
-             <p className="text-sm text-gray-600">{pkg.description}</p>
+             <p className="text-sm text-gray-600 ">{pkg.description}</p>
                   )}
                  
                 </CardHeader>
@@ -234,7 +235,7 @@ export default function Packages() {
                         {feature.points && (
                           <ul className="space-y-2">
                             {feature.points.map((point, i) => (
-                              <li key={i} className="flex items-start gap-2 text-sm">
+                              <li key={i} className="flex items-start gap-2 text-sm font-rubik">
                                 <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                                 <span className="text-gray-700">{point}</span>
                               </li>
