@@ -87,28 +87,28 @@ export default function Contact() {
                 <Input
                   id="name"
                   placeholder="Your Name *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
                 />
                 <Input
                   id="email"
                   type="email"
                   placeholder="Your Email *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
                 />
                 <Input
                   id="subject"
                   placeholder="Subject *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-xl px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
                 />
                 <Textarea
                   id="message"
                   rows={5}
                   placeholder="Your Message *"
-                  className="bg-white/95 text-black border border-gray-300 rounded-xl px-4 py-3 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                  className="bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 py-3 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
                 />
                 <Button
                   size="lg"
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-xl py-6 text-lg transition-all shadow-lg hover:shadow-xl"
+                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-[6px] py-6 text-lg transition-all shadow-lg hover:shadow-xl"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
