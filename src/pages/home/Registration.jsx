@@ -56,7 +56,7 @@ export default function Registration() {
 
                 <Button
                   className="bg-gradient-to-r font-rubik from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500
-                             text-white font-semibold text-lg py-6 px-10 rounded-xl shadow-lg 
+                             text-white font-semibold text-lg py-6 px-10 rounded-[6px] shadow-lg 
                              hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Register Now

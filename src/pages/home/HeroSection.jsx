@@ -33,7 +33,7 @@ export default function HeroSection() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 px-2 lg:px-8 flex items-center py-8 md:py-20 md:min-h-screen">
           <div className="max-w-3xl space-y-4 md:space-y-8 text-white">
             <div className="flex items-center gap-3">
-              <Badge className="bg-white/20 w-full md:w-auto text-sm md:text-lg text-white font-rubik hover:bg-white/30 px-4 py-2  backdrop-blur-sm">
+              <Badge className="bg-white/20 w-full rounded-[6px] md:w-auto text-sm md:text-lg text-white font-rubik hover:bg-white/30 px-4 py-2  backdrop-blur-sm">
                 <Star className="hidden md:inline w-4 h-4 mr-2" />
                 Empower your talent to drive your business forward
               </Badge>
@@ -49,7 +49,7 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
-                className="bg-white w-[200px] text-cyan-900 cursor-pointer rounded-[10px] hover:bg-cyan-50 md:px-10 md:py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                className="bg-white w-[200px] text-cyan-900 cursor-pointer rounded-[6px] hover:bg-cyan-50 md:px-10 md:py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                 onClick = {() => setOpen (true)}
               >
                 Request for Demo

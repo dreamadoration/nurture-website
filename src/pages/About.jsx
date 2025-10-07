@@ -11,7 +11,7 @@ export default function About() {
       <section className="relative h-[50vh] md:h-[70vh]  bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 px-8"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-10">
-          <Badge className="mb-4 w-full md:w-auto font-heebo text-sm md:text-lg bg-white/20 text-white hover:bg-blue-200 break-words whitespace-normal text-center">
+          <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-lg bg-white/20 text-white hover:bg-blue-200 break-words whitespace-normal text-center">
   We exist to spark change, empower minds, and build excellence
 </Badge>
 
@@ -66,26 +66,26 @@ export default function About() {
       {/* Our Vision */}
       <section className="py-10 md:py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10 font-heebo">Our Vision</h2>
-          <p className="text-gray-600 max-w-3xl font-rubik mx-auto mb-12">
+          <h2 className="text-3xl font-bold mb-4 font-heebo">Our Vision</h2>
+          <p className="text-gray-600 max-w-3xl font-rubik mx-auto mb-6">
             We envision a world where anyone, anywhere has the power to transform their lives through learning.
           </p>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
+            <div className="bg-gray-50 rounded-[6px] p-8 text-center shadow-sm hover:shadow-md transition">
               <Lightbulb className="w-full h-10 text-yellow-600 mb-4" />
               <h3 className="font-semibold text-lg mb-2 font-heebo">Innovation</h3>
               <p className="text-gray-600 text-sm leading-relaxed font-rubik">
                 Learning is the engine of progress, sparking ideas that drive industries forward.
               </p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
+            <div className="bg-gray-50 rounded-[6px] p-8 text-center shadow-sm hover:shadow-md transition">
               <Users className="w-full h-10 text-blue-600 mb-4" />
               <h3 className="font-semibold text-lg mb-2 font-heebo">Collaboration</h3>
               <p className="text-gray-600 text-sm leading-relaxed font-rubik">
                 Knowledge unites people, creating opportunities for communities to thrive.
               </p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
+            <div className="bg-gray-50 rounded-[6px] p-8 text-center shadow-sm hover:shadow-md transition">
               <Target className="w-full h-10 text-green-600 mb-4" />
               <h3 className="font-semibold text-lg mb-2 font-heebo">Impact</h3>
               <p className="text-gray-600 text-sm leading-relaxed font-rubik">
@@ -120,13 +120,13 @@ export default function About() {
                 <h2 className="text-3xl font-heebo font-bold text-foreground">Why We Exist</h2>
               </div>
               <div className="space-y-6 font-rubik">
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-[10px] p-6 shadow-sm border border-gray-100">
                   <p className="text-base text-foreground leading-relaxed">
                     Founded by a team of seasoned professionals with extensive experience in the pharmaceutical sector,
                     NURTURE was created to bridge the gap between industry challenges and effective solutions.
                   </p>
                 </div>
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                <div className="bg-whiterounded-[10px] p-6 shadow-sm border border-gray-100">
                   <p className="text-base text-foreground leading-relaxed">
                     With a deep understanding of the complexities of the pharmaceutical landscape, we realized that
                     continuous learning and expert guidance are key to driving progress. Our goal is to empower

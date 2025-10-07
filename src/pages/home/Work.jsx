@@ -59,7 +59,7 @@ export default function Work() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-4 md:mb-16">
-           <Badge className="w-full md:w-auto bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md  px-4 py-1.5 mb-4">
+           <Badge className="w-full md:w-auto bg-purple-100 rounded-[6px] text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md  px-4 py-1.5 mb-4">
             From strategy to success - we nurture every step
           </Badge>
           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-2 md:mb-6 text-gray-900">

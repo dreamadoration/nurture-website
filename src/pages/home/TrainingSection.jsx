@@ -49,8 +49,8 @@ export default function TrainingSection({ bgColor = "bg-gray-50" }) {
     <section id="training" className={`relative py-8 md:py-12 overflow-hidden ${bgColor}`}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-4 md:mb-8">
-          <Badge className="bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
+        <div className="text-center  mb-4 md:mb-8">
+          <Badge className="bg-purple-100 rounded-[6px] text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
             Expert Training Module
           </Badge>
           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-4 text-gray-900">
@@ -147,7 +147,7 @@ export default function TrainingSection({ bgColor = "bg-gray-50" }) {
               <div className="pt-2">
                 <Button
                   onClick={handleCalculate}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white cursor-pointer font-semibold text-lg py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white cursor-pointer font-semibold text-lg py-6 rounded-[6px] shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   Calculate Cost
                 </Button>

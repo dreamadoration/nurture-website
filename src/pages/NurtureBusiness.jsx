@@ -17,10 +17,16 @@ import {
   Phone,
 } from "lucide-react"
 import CTA from "./home/CTA"
+import { DemoModal } from "@/components/DemoModel"
+import { useState } from "react"
 
 
 export default function NurtureBusiness() {
 
+ const [open, setOpen] = useState(false)
+  const handleClose = () =>{
+    setOpen(false)
+  }
 
     const cardData = [
   {
@@ -69,16 +75,23 @@ export default function NurtureBusiness() {
 
 
   return (
+    <>
+    {
+          open &&(
+            <DemoModal open ={open} onOpenChange={handleClose} />
+          )
+        }
+  
     <div className="min-h-screen bg-background">
 
       {/* Hero Section */}
-            <section className="relative  h-[40vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
+            <section className="relative mb-4  h-[50vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-full">
+          <Badge className="mb-4 md:mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
            Enterprise Solutions
           </Badge>
-          <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
+          <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-4 md:mb-6 text-white drop-shadow-lg">
             Nurture for Business
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto font-rubik text-white/90 leading-relaxed">
@@ -89,11 +102,11 @@ export default function NurtureBusiness() {
       </section>
 
       {/* Key Benefits */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-10 md:py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">With Nurture for Business, you can:</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-4 md:mb-16">
+            <h2 className="text-4xl md:text-5xl font-heebo font-bold text-foreground mb-6">With Nurture for Business, you can:</h2>
+            <p className="text-xl text-muted-foreground font-rubik max-w-3xl mx-auto">
               Transform your workforce with cutting-edge training solutions designed for the pharmaceutical industry
             </p>
           </div>
@@ -103,8 +116,8 @@ export default function NurtureBusiness() {
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <BookOpen className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Expert-Curated Programs</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-xl font-semibold font-heebo mb-4">Expert-Curated Programs</h3>
+                <p className="text-muted-foreground font-rubik">
                   Provide transformative learning with expert-curated, learning programs designed for maximum impact.
                 </p>
               </CardContent>
@@ -114,8 +127,8 @@ export default function NurtureBusiness() {
                 <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <Zap className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Hands-On Learning</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-xl font-semibold mb-4 font-heebo">Hands-On Learning</h3>
+                <p className="text-muted-foreground font-rubik">
                   Enable hands-on learning experiences to drive rapid skill acquisition and practical application.
                 </p>
               </CardContent>
@@ -125,8 +138,8 @@ export default function NurtureBusiness() {
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <BarChart3 className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Track & Measure</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-xl font-semibold mb-4 font-heebo">Track & Measure</h3>
+                <p className="text-muted-foreground font-rubik">
                   Track and measure skill development and benchmark proficiency against industry peers.
                 </p>
               </CardContent>
@@ -136,10 +149,10 @@ export default function NurtureBusiness() {
       </section>
 
       {/* Empower Your Talent */}
-      <section className="py-20">
+      <section className="py-4 md:py-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl font-bold font-heebo text-foreground mb-6">
              Transforming Talent into Business Impact
             </h2>
           </div>
@@ -180,7 +193,7 @@ export default function NurtureBusiness() {
                 <div className="text-2xl font-bold text-blue-900 font-rubik">95%</div>
                 <div className="text-sm text-muted-foreground font-heebo">Success Rate</div>
               </div>
-              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
+              <div className="absolute -top-6 -right-0 md:-right-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
                 <div className="text-2xl font-bold text-blue-900 font-rubik">50K+</div>
                 <div className="text-sm font-heebo text-muted-foreground">Trained</div>
               </div>
@@ -192,8 +205,8 @@ export default function NurtureBusiness() {
       {/* Key Features */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 font-heebo">Everything You Need to Succeed</h2>
+          <div className="text-center">
+            <h2 className="text-4xl font-bold mb-2 md:mb-6 font-heebo">Everything You Need to Succeed</h2>
           </div>
          <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-8">
       {cardData.map((card, index) => {
@@ -257,7 +270,7 @@ export default function NurtureBusiness() {
         <Button
           size="lg"
           className="bg-gradient-to-r cursor-pointer from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
-                     text-white font-bold px-10 py-5 text-lg rounded-xl 
+                     text-white font-bold px-10 py-5 text-lg rounded-[6px] 
                      shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
         >
           Start a Free Demo
@@ -270,5 +283,6 @@ export default function NurtureBusiness() {
 
 
     </div>
+      </>
   )
 }

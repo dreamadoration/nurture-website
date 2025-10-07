@@ -12,10 +12,10 @@ export default function Contact() {
       <section className="relative h-[50vh] md:h-[60vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-full">
+          <Badge className="mb-4 md:mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
             Let's Connect
           </Badge>
-          <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
+          <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-2 md:mb-6 text-white drop-shadow-lg">
             Meeting all your pharma training needs
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto font-rubik text-white/90 leading-relaxed">
@@ -26,9 +26,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Details */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 md:py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Reach out to us via phone, email, or visit our office. We’re here to help.

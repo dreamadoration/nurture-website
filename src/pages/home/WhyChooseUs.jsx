@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
-            <Badge className="mb-4 font-heebo text-md bg-blue-100 text-blue-800 hover:bg-blue-200">We don’t just train - we transform</Badge>
+            <Badge className="mb-4 font-heebo rounded-[6px] text-md bg-blue-100 text-blue-800 hover:bg-blue-200">We don’t just train - we transform</Badge>
            <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
             Why Choose
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">

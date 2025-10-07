@@ -71,8 +71,8 @@ export function Header() {
             <a href="#registration" className="hidden md:block">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
-                           text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
+                className="bg-gradient-to-r rounded-[6px] from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
+                           text-white font-bold px-2 py-1 text-sm  cursor-pointer
                            shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
               >
                 Register for Demo
@@ -287,7 +287,7 @@ export function Header() {
           <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
-                           text-white font-bold px-2 py-1 text-sm rounded-lg cursor-pointer
+                           text-white font-bold px-2 py-1 text-sm rounded-[6px] cursor-pointer
                            shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
                            onClick={handleDemoClick}
               >

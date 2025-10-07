@@ -45,7 +45,7 @@ export default function Team() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-16">
-          <Badge className="bg-purple-100 w-full md:w-auto text-sm text-purple-800 font-heebo hover:bg-purple-200 md:text-md px-4 py-1.5 mb-4">
+          <Badge className="bg-purple-100 rounded-[6px] w-full md:w-auto text-sm text-purple-800 font-heebo hover:bg-purple-200 md:text-md px-4 py-1.5 mb-4">
             We are driven by our mission and fuelled by our team
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heebo font-bold text-gray-900 mb-4">
@@ -115,7 +115,7 @@ export default function Team() {
                     variant="ghost" 
                     size="sm"
                     onClick={() => navigate("/team")}
-                    className="text-[#1c398e] group-hover:bg-[#1c398e] cursor-pointer text-lg py-2 px-3 font-heebo group-hover:text-white transition-all"
+                    className="text-[#1c398e] group-hover:bg-[#1c398e] cursor-pointer text-lg py-2 px-3 font-heebo group-hover:text-white transition-all group-hover:rounded-[6px]"
                   >
                       Read More
                        <ArrowRight className="w-5 h-5" />

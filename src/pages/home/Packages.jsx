@@ -169,7 +169,7 @@ export default function Packages() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-16">
-          <Badge className="-full md:w-auto bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
+          <Badge className="-full md:w-auto rounded-[6px] bg-purple-100 text-purple-800 font-heebo hover:bg-purple-200 text-sm md:text-md px-4 py-1.5 mb-4">
             Meeting all your pharma training needs
           </Badge>
           <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
@@ -198,7 +198,7 @@ export default function Packages() {
               >
                 {/* Popular badge */}
                 {pkg.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-cyan-600 text-white px-4 py-1 flex items-center gap-1">
+                  <Badge className="absolute -top-3 rounded-[6px] left-1/2 transform -translate-x-1/2 bg-cyan-600 text-white px-4 py-1 flex items-center gap-1">
                     <Star className="h-3 w-3 fill-current" />
                     Most Popular
                   </Badge>
@@ -252,7 +252,7 @@ export default function Packages() {
                   <Button
                     onClick={() => togglePackage(pkg.id)}
                     variant={pkg.popular ? "default" : "outline"}
-                    className={`w-full transition-all duration-200 ${
+                    className={`w-full transition-all duration-200 rounded-[6px] ${
                       pkg.popular
                         ? "bg-cyan-600 hover:bg-cyan-700 text-white"
                         : "border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white"

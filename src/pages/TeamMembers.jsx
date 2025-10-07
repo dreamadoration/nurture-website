@@ -40,7 +40,7 @@ export default function TeamMember() {
         <section className="relative  h-[40vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-6 text-sm font-heebo font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-full">
+          <Badge className="mb-6 text-sm font-heebo font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
            We are driven by our mission and fuelled by our team
           </Badge>
           <h1 className="text-4xl md:text-6xl font-heebo font-extrabold mb-6 text-white drop-shadow-lg">

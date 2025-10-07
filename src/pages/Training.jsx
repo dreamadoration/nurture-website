@@ -20,7 +20,7 @@ export default function TrainingModePage() {
        <section className="relative  h-[40vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-full">
+          <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
            Live Interactive Training
           </Badge>
           <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
@@ -169,7 +169,7 @@ export default function TrainingModePage() {
               growth.
             </p>
             <div className="flex flex-col sm:flex-row font-heebo gap-4 justify-center">
-              <Button className="bg-white hover:bg-blue-700 hover:text-white rounded-[8px] py-2 cursor-pointer text-blue-900 font-semibold">
+              <Button className="bg-white hover:bg-blue-700 hover:text-white rounded-[6px] py-2 cursor-pointer text-blue-900 font-semibold">
                 Schedule Your Training
               </Button>
             </div>
