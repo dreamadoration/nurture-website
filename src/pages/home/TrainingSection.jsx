@@ -86,9 +86,9 @@ export default function TrainingSection({ bgColor = "bg-gray-50" }) {
                   <SelectContent className="bg-white">
                     {tokenPackages.map((pkg) => (
                       <SelectItem key={pkg.id} value={pkg.id}>
-                        <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center justify-between w-full cursor-pointer">
                           <span className="font-medium">{pkg.name}</span>
-                          <Badge variant="secondary" className="text-md rounded-full bg-gray-100 text-gray-800">
+                          <Badge variant="secondary" className="text-md rounded-full bg-gray-100 text-gray-800 cursor-pointer">
                             ₹{pkg.amount.toLocaleString()}
                           </Badge>
                         </div>
