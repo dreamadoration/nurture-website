@@ -8,10 +8,10 @@ export default function About() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[70vh]  bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] md:h-[50vh]  bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 px-8"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-10">
-          <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-lg bg-white/20 text-white hover:bg-blue-200 break-words whitespace-normal text-center">
+          <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-lg bg-white/20 text-white break-words whitespace-normal text-center">
   We exist to spark change, empower minds, and build excellence
 </Badge>
 

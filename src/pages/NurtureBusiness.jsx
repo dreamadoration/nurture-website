@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import transformImage from  "../assets/images/transforming-talent-business-impact.jpg"
+
 import {
   TrendingUp,
   Heart,
@@ -88,7 +90,7 @@ export default function NurtureBusiness() {
             <section className="relative mb-4  h-[50vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-4 md:mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
+          <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-lg bg-white/20 text-white break-words whitespace-normal text-center">
            Enterprise Solutions
           </Badge>
           <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-4 md:mb-6 text-white drop-shadow-lg">
@@ -158,7 +160,7 @@ export default function NurtureBusiness() {
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content Side */}
-            <div className="space-y-4">
+            <div className="space-y-2">
               {[
                 "Train teams with respected industry experts",
                 "Enrich learning solutions with tailored paths",
@@ -170,7 +172,7 @@ export default function NurtureBusiness() {
               ].map((benefit, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-[10px] bg-blue-100 hover:bg-blue-200 transition-colors"
+                  className="flex items-start gap-4 p-2 rounded-[10px] bg-blue-100 hover:bg-blue-200 transition-colors"
                 >
                   <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
                   <p className="text-foreground font-medium">{benefit}</p>
@@ -182,18 +184,18 @@ export default function NurtureBusiness() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://industrie.rstheme.com/laboratory/wp-content/uploads/2024/03/project_02.jpg"
+                  src={transformImage}
                   alt="Pharmaceutical professionals in training session"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
               </div>
               {/* Floating stats */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
+              <div className="absolute -bottom-6 -left-2 md:-left-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
                 <div className="text-2xl font-bold text-blue-900 font-rubik">95%</div>
                 <div className="text-sm text-muted-foreground font-heebo">Success Rate</div>
               </div>
-              <div className="absolute -top-6 -right-0 md:-right-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
+              <div className="absolute -top-10 -right-2 md:-right-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
                 <div className="text-2xl font-bold text-blue-900 font-rubik">50K+</div>
                 <div className="text-sm font-heebo text-muted-foreground">Trained</div>
               </div>

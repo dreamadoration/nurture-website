@@ -96,7 +96,7 @@ export default function Services() {
        <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-md bg-white/20 text-white hover:bg-white/30">Empower your talent to drive your business forward</Badge>
 
       <h2 className="text-4xl lg:text-5xl font-heebo font-bold text-white mb-6">
-        Our Pharmaceutical Services
+        Our Pharmaceutical Services Include
       </h2>
       <p className="text-lg text-gray-300 max-w-3xl font-rubik mx-auto leading-relaxed">
         Empowering pharma companies with tailored training and expert consulting to overcome challenges, streamline operations, and accelerate growth.

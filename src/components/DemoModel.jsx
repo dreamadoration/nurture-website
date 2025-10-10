@@ -130,7 +130,7 @@ export function DemoModal({ open, onOpenChange }) {
           <Button
             type="submit"
             className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500
-                       text-white font-semibold text-lg py-6 rounded-xl shadow-md hover:shadow-lg
+                       text-white font-semibold text-lg py-6 rounded-[6px] shadow-md hover:shadow-lg
                        transition-all duration-300 flex items-center justify-center gap-2"
           >
             Submit Request

@@ -36,20 +36,18 @@ export function Header() {
     setOpenSection(openSection === section ? null : section)
   }
 
-  const handleDemoClick = () => {
-    setMobileMenuOpen(false)
-    navigate("#registration") 
-  }
- const scrollToSection = (sectionId) => {
+ const handleDemoClick = () => {
+  setMobileMenuOpen(false);
+  scrollToSection("registration");
+};
+const scrollToSection = (sectionId) => {
   if (location.pathname !== "/") {
-   
     navigate("/", { state: { scrollTo: sectionId } });
   } else {
     const element = document.getElementById(sectionId);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   }
 };
-
   return (
     <>
       {/* Top bar */}
@@ -67,17 +65,15 @@ export function Header() {
             </a>
           </div>
 
-          <div className="flex items-center gap-3">
-            <a href="#registration" className="hidden md:block">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r rounded-[6px] from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
-                           text-white font-bold px-2 py-1 text-sm  cursor-pointer
-                           shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
-              >
-                Register for Demo
-              </Button>
-            </a>
+          <div className="flex items-center gap-3" >
+          <button
+  onClick={() => scrollToSection("registration")}
+  className="hidden sm:flex bg-gradient-to-r rounded-[6px] from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
+             text-white font-bold px-2 py-1 text-sm cursor-pointer
+             shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+>
+  Register for Demo
+</button>
 
             <div className="flex items-center gap-2">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
@@ -98,7 +94,7 @@ export function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-[#ddd] bg-white/95 backdrop-blur shadow-sm">
         <div className="max-w-7xl mx-auto flex h-20 items-center justify-between px-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center space-x-2">
       <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
      <img className="w-[90px]" src={logoImage} alt = "Nurture" />
       </a>
@@ -107,7 +103,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 font-rubik">
-            <Link to="/" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium">
               Home
             </Link>
             <Link to="#" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium" onClick={() => scrollToSection("packages")}>
@@ -115,56 +111,65 @@ export function Header() {
             </Link>
 
             {/* Story Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main">
-                <span className="menu-main">Story</span>
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-white border-gray-200 shadow-lg">
-                {storyItems.map((item) => (
-                  <DropdownMenuItem key={item.href} asChild>
-                    <Link
-                      to={item.href}
-                      className="w-full px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
-                    >
-                      {item.title}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <DropdownMenu open={openSection === "story"} onOpenChange={(open) => setOpenSection(open ? "story" : null)}>
+  <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main" asChild>
+    <span
+      onMouseEnter={() => setOpenSection("story")}
+      onMouseLeave={() => setOpenSection(null)}
+      className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer"
+    >
+      Story <ChevronDown className="w-4 h-4" />
+    </span>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("story")} onMouseLeave={() => setOpenSection(null)}>
+    {storyItems.map((item) => (
+      <DropdownMenuItem key={item.href} asChild>
+        <Link to={item.href} className="w-full px-3 py-4 text-gray-700 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold">
+          {item.title}
+        </Link>
+      </DropdownMenuItem>
+    ))}
+  </DropdownMenuContent>
+</DropdownMenu>
+
 
             {/* Programs Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main">
-                <span className="menu-main">Programs</span>
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg">
-  {programItems.map((item) => (
-    <DropdownMenuItem key={item.href} asChild>
-      {item.href.startsWith("/") ? (
+                  <DropdownMenu open={openSection === "program"} onOpenChange={(open) => setOpenSection(open ? "program" : null)}>
+  <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main" asChild>
+    <span
+      onMouseEnter={() => setOpenSection("program")}
+      onMouseLeave={() => setOpenSection(null)}
+      className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer"
+    >
+      Programs <ChevronDown className="w-4 h-4" />
+    </span>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg  hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("program")} onMouseLeave={() => setOpenSection(null)}>
+    {programItems.map((item) => (
+      <DropdownMenuItem key={item.href} asChild>
+          {item.href.startsWith("/") ? (
         // Normal page link
         <Link
           to={item.href}
-          className="w-full px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
+          className="w-full px-3 py-4 text-gray-700 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold"
         >
           {item.title}
         </Link>
       ) : (
         // Scroll to section
-        <button
+        <Link
           onClick={() => scrollToSection(item.href)}
-          className="w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer"
+          className="w-full px-3 py-4 text-gray-700 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold"
         >
           {item.title}
-        </button>
+        </Link>
       )}
-    </DropdownMenuItem>
-  ))}
-</DropdownMenuContent>
-
-            </DropdownMenu>
+      </DropdownMenuItem>
+    ))}
+  </DropdownMenuContent>
+</DropdownMenu>
 
             <Link to="/contact" className="text-gray-700 hover:text-cyan-600 font-medium">
               Contact

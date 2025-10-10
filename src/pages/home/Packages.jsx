@@ -179,7 +179,7 @@ export default function Packages() {
             </span>
           </h2>
           <p className="text-lg md:text-xl font-rubik text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Choose the perfect solution for your healthcare practice with our tailored packages designed to meet
+            Choose the perfect solution for your team with our tailored packages designed to meet
             diverse professional needs.
           </p>
         </div>

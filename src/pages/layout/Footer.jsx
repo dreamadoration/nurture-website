@@ -1,9 +1,35 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import Link
 
 export default function Footer() {
   const [newYear, setNewYear] = useState("");
+
+   const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const quickLinks = [
+    { name: "Home", link: "/" },
+    { name: "Packages", link: "packages" }, // Section on Home page
+    { name: "Contact", link: "/contact" },
+    { name: "About us", link: "/about" },
+    { name: "Our Team", link: "/team" },
+  ];
+
+  const programLinks = [
+                { name: "Mode of Training", link: "/training" },
+                { name: "Services", link: "services" },
+                { name: "Nurture for Business", link: "/nurture" },
+   ];
 
   useEffect(() => {
     const getYear = new Date().getFullYear();
@@ -21,8 +47,7 @@ export default function Footer() {
               Nurture
             </h3>
             <p className="text-gray-600 mb-8 leading-relaxed max-w-sm font-rubik">
-              Empowering healthcare professionals with innovative pharmaceutical solutions and expert training
-              programs. Your trusted partner in advancing healthcare excellence and patient outcomes.
+              Empower your team to drive your business forward. Build essential skills across your teams and boost impact and agility with technology, data, and leadership. Save time and training costs with content customized according to your needs.
             </p>
             <div className="flex gap-4">
               {[{ icon: Facebook, link: "#" }, { icon: Instagram, link: "#" }, { icon: Linkedin, link: "#" }].map((item, index) => (
@@ -41,40 +66,62 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-blue-900 font-heebo">Quick Links</h4>
-            <ul className="space-y-3 text-gray-600 font-rubik">
-              {[
-                { name: "Home", link: "/" },
-                { name: "Packages", link: "/#packages" },
-                { name: "Contact", link: "/contact" },
-                { name: "About us", link: "/about" },
-                { name: "Our Team", link: "/team" },
-              ].map((item, index) => (
-                <li key={index}>
-                  <Link to={item.link} className="hover:text-cyan-500 transition-colors">
+          <h4 className="text-lg font-bold mb-6 text-blue-900 font-heebo">
+            Quick Links
+          </h4>
+          <ul className="space-y-3 text-gray-600 font-rubik">
+            {quickLinks.map((item, index) => (
+              <li key={index}>
+                {item.link.startsWith("/") ? (
+                  <Link
+                    to={item.link}
+                    className="hover:text-cyan-500 transition-colors"
+                    onClick={() => {
+                      if (item.link === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
                     {item.name}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ) : (
+                  <button
+                    className="hover:text-cyan-500 transition-colors cursor-pointer"
+                    onClick={() => scrollToSection(item.link)}
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
           
           {/* Programs / Services */}
           <div>
             <h4 className="text-lg font-bold mb-6 text-blue-900 font-heebo">Programs</h4>
             <ul className="space-y-3 text-gray-600 font-rubik">
-              {[
-                { name: "Mode of Training", link: "/training" },
-                { name: "Services", link: "/#services" },
-                { name: "Nurture for Business", link: "/nurture" },
-              ].map((service, index) => (
-                <li key={index}>
-                  <Link to={service.link} className="hover:text-cyan-500 transition-colors">
-                    {service.name}
+            {programLinks.map((item, index) => (
+              <li key={index}>
+                {item.link.startsWith("/") ? (
+                  <Link
+                    to={item.link}
+                    className="hover:text-cyan-500 transition-colors"
+                    onClick={() => {
+                      if (item.link === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
+                    {item.name}
                   </Link>
-                </li>
-              ))}
-            </ul>
+                ) : (
+                  <button
+                    className="hover:text-cyan-500 transition-colors cursor-pointer"
+                    onClick={() => scrollToSection(item.link)}
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
           </div>
 
           {/* Contact Info */}

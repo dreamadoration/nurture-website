@@ -20,11 +20,11 @@ export default function TrainingModePage() {
        <section className="relative  h-[40vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 font-rubik text-center max-w-4xl mx-auto px-4">
-          <Badge className="mb-6 text-sm font-medium bg-white/20 text-white border border-white/30 px-4 py-1 rounded-[6px]">
+          <Badge className="mb-4 w-full md:w-auto rounded-[6px] font-heebo text-sm md:text-lg bg-white/20 text-white break-words whitespace-normal text-center">
            Live Interactive Training
           </Badge>
           <h1 className="text-4xl font-heebo md:text-6xl font-extrabold mb-6 text-white drop-shadow-lg">
-            Training Mode
+            Training Delivery
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto font-rubik text-white/90 leading-relaxed">
             Experience real-time, interactive learning through live video sessions that combine convenience with engagement
