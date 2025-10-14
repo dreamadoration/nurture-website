@@ -11,38 +11,90 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowRight } from "lucide-react"
+import { toast } from "react-toastify"
+import LoaderData from "@/helper/Loader"
+import { validateSchema } from "@/helper/Validation"
 
 export function DemoModal({ open, onOpenChange }) {
+   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    phone: "",
-    package: "",
-    message: "",
+    company_name: "",
+    phone_number: "",
+    select_package: "",
   })
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
+     const validationSchema = {
+    name: [{ type: "required" }],
+    email: [
+      { type: "required" },
+      { type: "email" },
+    ],
+    phone_number: [
+      { type: "required" },
+      { type: "phone" },
+    ],
+    company_name: [{ type: "required" }],
+     select_package: [{ type: "required" }],
+  };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    console.log("[Demo Request Submitted]", formData)
-    onOpenChange(false)
+     const errors = validateSchema(validationSchema, formData);
+        if (Object.keys(errors).length > 0) {
+          const firstError = Object.values(errors)[0];
+          toast.error(firstError, { position: "top-center" });
+          return;
+        }
+         setLoading(true);
+    
 
-    setFormData({
+    try {
+        const response = await fetch(window.Configs.registration_API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        setLoading(false);
+        console.log("Success:", data);
+       toast.success("Thank you! Your demo request has been submitted successfully.", { position: "top-center" });
+        setFormData({
       name: "",
       email: "",
-      company: "",
-      phone: "",
-      package: "",
-      message: "",
+      company_name: "",
+      phone_number: "",
+      select_package: "",
     })
+      } catch (error) {
+        console.error("Error:", error);
+          setLoading(false);
+         toast.error("Something went wrong. Please try again.", {
+          position: "top-center",
+        });
+      }
+    finally {
+      onOpenChange(false)
+    }
   }
 
   return (
+    <>
+     <LoaderData show={loading} />
+  
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] bg-white rounded-2xl shadow-lg">
         <DialogHeader>
@@ -87,10 +139,10 @@ export function DemoModal({ open, onOpenChange }) {
             <div>
               <Label className="text-sm font-medium text-gray-700 mb-2 font-rubik">Phone</Label>
               <Input
-                name="phone"
+                name="phone_number"
                 type="tel"
                 placeholder="Phone Number"
-                value={formData.phone}
+                value={formData.phone_number}
                 onChange={handleChange}
                 className="border border-gray-300 text-gray-800 focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400"
               />
@@ -98,9 +150,9 @@ export function DemoModal({ open, onOpenChange }) {
             <div>
               <Label className="text-sm font-medium text-gray-700 mb-2 font-rubik">Company</Label>
               <Input
-                name="company"
+                name="company_name"
                 placeholder="Company Name"
-                value={formData.company}
+                value={formData.company_name}
                 onChange={handleChange}
                 className="border border-gray-300 text-gray-800 focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400"
               />
@@ -111,8 +163,8 @@ export function DemoModal({ open, onOpenChange }) {
           <div>
             <Label className="text-sm font-medium text-gray-700 mb-2 font-rubik">Select Package</Label>
             <select
-              name="package"
-              value={formData.package}
+              name="select_package"
+              value={formData.select_package}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md py-2 px-3 text-gray-800 bg-white 
                          focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400"
@@ -129,7 +181,7 @@ export function DemoModal({ open, onOpenChange }) {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500
+            className="w-full bg-gradient-to-r cursor-pointer from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500
                        text-white font-semibold text-lg py-6 rounded-[6px] shadow-md hover:shadow-lg
                        transition-all duration-300 flex items-center justify-center gap-2"
           >
@@ -139,5 +191,6 @@ export function DemoModal({ open, onOpenChange }) {
         </form>
       </DialogContent>
     </Dialog>
+      </>
   )
 }

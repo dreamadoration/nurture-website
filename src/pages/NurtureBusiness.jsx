@@ -271,6 +271,7 @@ export default function NurtureBusiness() {
       <div className="flex justify-center">
         <Button
           size="lg"
+          onClick = {() => setOpen (true)}
           className="bg-gradient-to-r cursor-pointer from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 
                      text-white font-bold px-10 py-5 text-lg rounded-[6px] 
                      shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"

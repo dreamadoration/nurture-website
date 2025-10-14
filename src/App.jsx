@@ -11,11 +11,13 @@ import NurtureBusiness from './pages/NurtureBusiness'
 import TeamMember from './pages/TeamMembers'
 import Training from './pages/Training'
 import Contact from './pages/Contact'
+import "react-toastify/dist/ReactToastify.css";
 
 // Layout wrapper
 function Layout() {
   return (
     <>
+    
       <Header />
       <Outlet />   {/* Page content will render here */}
       <Footer />

@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { ChevronDown, ChevronUp, Facebook, Instagram, Linkedin, Mail, Menu, Phone } from "lucide-react"
+import { ChevronDown, ChevronUp, Facebook, Instagram, Linkedin, Mail, Menu, Phone, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -54,13 +54,13 @@ const scrollToSection = (sectionId) => {
       <div className="w-full bg-blue-900 text-white">
         <div className="mx-auto flex ml-4 mr-4 md:ml-10 md:mr-10 items-center justify-between px-4 py-2 text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+1555123-4567" className="flex items-center gap-2 hover:underline">
+            <a href="tel:9711303396" className="flex items-center gap-2 hover:underline">
               <Phone className="w-4 h-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>9711303396</span>
             </a>
-            <a href="mailto:info@nurture.com" className="flex items-center gap-2 hover:underline">
+            <a href="mailto:support@nurtureorg.com" className="flex items-center gap-2 hover:underline">
               <Mail className="w-4 h-4" />
-              <span className="hidden sm:inline">info@nurture.com</span>
+              <span className="hidden sm:inline">support@nurtureorg.com</span>
               <span className="sm:hidden">Email</span>
             </a>
           </div>
@@ -79,11 +79,15 @@ const scrollToSection = (sectionId) => {
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
+              <a href="https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==
+" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
+              <a href="https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Linkedin className="w-5 h-5" />
+              </a>
+               <a href="https://www.youtube.com/@NurtureTrainingSolutions" target="_blank" rel="noreferrer" className="hover:text-teal-300">
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -111,10 +115,10 @@ const scrollToSection = (sectionId) => {
             </Link>
 
             {/* Story Dropdown */}
-            <DropdownMenu open={openSection === "story"} onOpenChange={(open) => setOpenSection(open ? "story" : null)}>
+            <DropdownMenu open={openSection === "ourStory"} onOpenChange={(open) => setOpenSection(open ? "ourStory" : null)}>
   <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main" asChild>
     <span
-      onMouseEnter={() => setOpenSection("story")}
+      onMouseEnter={() => setOpenSection("ourStory")}
       onMouseLeave={() => setOpenSection(null)}
       className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer"
     >
@@ -122,7 +126,7 @@ const scrollToSection = (sectionId) => {
     </span>
   </DropdownMenuTrigger>
 
-  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("story")} onMouseLeave={() => setOpenSection(null)}>
+  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("ourStory")} onMouseLeave={() => setOpenSection(null)}>
     {storyItems.map((item) => (
       <DropdownMenuItem key={item.href} asChild>
         <Link to={item.href} className="w-full px-3 py-4 text-gray-700 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold">
@@ -204,7 +208,7 @@ const scrollToSection = (sectionId) => {
           >
             Home
           </Link>
-           <Link to="#" className="text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium" onClick={() => scrollToSection("packages")}>
+           <Link to="#" className="text-lg text-gray-700 hover:text-cyan-600 transition-colors duration-200 font-medium" onClick={() => scrollToSection("packages")}>
               Packages
             </Link>
 
@@ -214,7 +218,7 @@ const scrollToSection = (sectionId) => {
               onClick={() => toggleSection("story")}
               className="flex items-center justify-between w-full text-lg font-medium text-gray-900 hover:text-cyan-600 menu-main"
             >
-              <span className="menu-main">Story</span>
+              <span className="menu-main text-lg font-medium text-gray-700">Story</span>
               {openSection === "story" ? (
                 <ChevronUp className="w-5 h-5" />
               ) : (
@@ -243,7 +247,7 @@ const scrollToSection = (sectionId) => {
     onClick={() => toggleSection("programs")}
     className="flex items-center justify-between w-full text-lg font-medium text-gray-900 hover:text-cyan-600 menu-main"
   >
-    <span className="menu-main">Programs</span>
+    <span className="menu-main text-lg font-medium text-gray-700">Programs</span>
     {openSection === "programs" ? (
       <ChevronUp className="w-5 h-5" />
     ) : (

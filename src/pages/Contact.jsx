@@ -4,9 +4,80 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { useState } from "react"
+import { validateSchema } from "@/helper/Validation"
+import LoaderData from "@/helper/Loader"
+import { toast } from "react-toastify"
 
 export default function Contact() {
+   const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+ const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+   //Validation function
+   const validationSchema = {
+    name: [{ type: "required" }],
+    email: [
+      { type: "required" },
+      { type: "email" },
+    ],
+    subject: [{ type: "required" }],
+  };
+
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+    const errors = validateSchema(validationSchema, formData);
+    if (Object.keys(errors).length > 0) {
+      const firstError = Object.values(errors)[0];
+      toast.error(firstError, { position: "top-center" });
+      return;
+    }
+     setLoading(true);
+    try {
+      const response = await fetch(window.Configs.contact_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+        setLoading(false);
+
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      // ✅ Toast message
+      toast.success("Message sent successfully!", { position: "top-center" });
+    } catch (error) {
+      console.error("Error:", error);
+        setLoading(false);
+      toast.error("Something went wrong. Please try again.", {
+        position: "top-center",
+      });
+    }
+  };
+
+
   return (
+    <>
+     <LoaderData show={loading} />
+
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative h-[50vh] md:h-[50vh] bg-gradient-to-br from-[#003366] via-[#004080] to-[#0059b3] flex items-center justify-center overflow-hidden">
@@ -43,7 +114,8 @@ export default function Contact() {
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 font-heebo">Visit Us</h3>
-                <p className="font-rubik text-muted-foreground">123 Pharma Excellence Drive</p>
+                <p className="font-rubik text-muted-foreground"> 701 ARS SIGNATURE HOMES SARJAPUR
+BENGALURU- 562125</p>
               </CardContent>
             </Card>
 
@@ -54,7 +126,7 @@ export default function Contact() {
                   <Phone className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 font-heebo">Call Us</h3>
-                <p className="text-xl font-bold font-rubik">+1 (555) 123-4567</p>
+                <p className="text-xl font-rubik"><a href="tel:9711303396">9711303396</a></p>
               </CardContent>
             </Card>
 
@@ -65,7 +137,7 @@ export default function Contact() {
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 font-heebo">Email Us</h3>
-                <p className="font-rubik text-lg">info@nurture-pharma.com</p>
+                <p className="font-rubik text-lg"><a href="mailto:support@nurtureorg.com">support@nurtureorg.com</a></p>
               </CardContent>
             </Card>
           </div>
@@ -83,32 +155,48 @@ export default function Contact() {
                 Fill out the form and our team will get back to you within 24 hours.
               </p>
 
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleForm}>
                 <Input
                   id="name"
+                  name="name"
                   placeholder="Your Name *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                   value={formData.name}
+                    required
+                   onChange={handleChange}
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 transition-all"
                 />
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="Your Email *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                   value={formData.email}
+                    required
+                   onChange={handleChange}
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 transition-all"
                 />
                 <Input
                   id="subject"
+                  name="subject"
                   placeholder="Subject *"
-                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                  onChange={handleChange}
+                   value={formData.subject}
+                    required
+                  className="h-12 bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 shadow-sm focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 transition-all"
                 />
                 <Textarea
                   id="message"
+                  name="message"
                   rows={5}
                   placeholder="Your Message *"
-                  className="bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 py-3 shadow-sm focus:ring-0 focus:border-blue-400 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.2)] focus-visible:outline-none transition-all"
+                   value={formData.message}
+                   onChange={handleChange}
+                  className="bg-white/95 text-black border border-gray-300 rounded-[6px] px-4 py-3 shadow-sm ffocus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400 transition-all"
                 />
                 <Button
                   size="lg"
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-[6px] py-6 text-lg transition-all shadow-lg hover:shadow-xl"
+                  type= "submit"
+                  className="w-full cursor-pointer bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-[6px] py-6 text-lg transition-all shadow-lg hover:shadow-xl focus-visible:outline-0 focus-visible:ring-0 focus:border-gray-400"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
@@ -120,7 +208,7 @@ export default function Contact() {
           {/* Right - Map */}
           <div className="relative">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1635959542834!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.658962624548!2d77.772228574545!3d12.865290017201188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae73bc62440c9d%3A0x757572f2918546e4!2sARS%20Signature%20Homes%20Phase%201!5e0!3m2!1sen!2sin!4v1760419831090!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -133,5 +221,6 @@ export default function Contact() {
         </div>
       </section>
     </div>
+        </>
   )
 }

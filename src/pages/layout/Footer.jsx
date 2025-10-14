@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import Link
 
@@ -50,7 +50,7 @@ export default function Footer() {
               Empower your team to drive your business forward. Build essential skills across your teams and boost impact and agility with technology, data, and leadership. Save time and training costs with content customized according to your needs.
             </p>
             <div className="flex gap-4">
-              {[{ icon: Facebook, link: "#" }, { icon: Instagram, link: "#" }, { icon: Linkedin, link: "#" }].map((item, index) => (
+              {[{ icon: Facebook, link: "#" }, { icon: Instagram, link: "https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==" }, { icon: Linkedin, link: "https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" }, {icon: Youtube, link: "https://www.youtube.com/@NurtureTrainingSolutions"}].map((item, index) => (
                 <a
                   key={index}
                   href={item.link}
@@ -132,19 +132,28 @@ export default function Footer() {
                 <div className="bg-blue-600 p-2 rounded-full text-white mt-1">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span>123 Medical Center Dr, Healthcare City, HC 12345</span>
+                <span> 701 ARS SIGNATURE HOMES SARJAPUR
+BENGALURU- 562125</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div >
+                <a href='mailto:support@nurtureorg.com'>
+                    <div className='flex items-center gap-3'>
                 <div className="bg-blue-600 p-2 rounded-full text-white">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span>info@nurture.com</span>
+                <span>support@nurtureorg.com</span>
+                </div>
+                </a>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="">
+                  <a href='tel:9711303396'>
+                    <div className='flex items-center gap-3'>
                 <div className="bg-blue-600 p-2 rounded-full text-white">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span>+1 (555) 123-4567</span>
+                <span>9711303396</span>
+                </div>
+                </a>
               </div>
             </div>
           </div>

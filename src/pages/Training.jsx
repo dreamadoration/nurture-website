@@ -90,7 +90,7 @@ export default function TrainingModePage() {
       {/* Left Content */}
       <div>
         <h2 className="text-3xl md:text-4xl font-heebo font-bold mb-8">What to Expect</h2>
-        <div className="space-y-6">
+        <div className="space-y-6 font-rubik">
           {[
             {
               icon: Monitor,

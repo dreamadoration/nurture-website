@@ -16,9 +16,7 @@ export default function Team() {
        name: "Mohd Imran Khan",
       designation: "Co-founder & Chief of Training and Client Strategy",
       image: member1,
-      content: "With over 15 years of experience in pharmaceutical sales and team leadership, Imran co-founded Nurture to bridge the gap between academic learning and real-world performance.A Pharmacy graduate, he’s worked closely with medical reps, doctors, and pharma leaders,giving him deep insight into what it takes to thrive in the industry.",
-      linkedin: "https://linkedin.com/in/dr-michael-chen",
-      email: "m.chen@pharmaexcellence.com"
+      content: "With over 15 years of experience in pharmaceutical sales and team leadership, Imran co-founded Nurture to bridge the gap between academic learning and real-world performance. A Pharmacy graduate, he’s worked closely with medical reps, doctors, and pharma leaders, giving him deep insight into what it takes to thrive in the industry.",
     },
     {
       id: 2,
@@ -26,8 +24,6 @@ export default function Team() {
       designation: "Co-founder & Director – Program Delivery & Pharmacovigilance",
       image:member3,
       content: "With over 13 years of experience in pharmaceutical sales, marketing, and pharmacovigilance, Noopur blends academic rigor with practical industry insight. A Master’s in Pharmacy, she brings a dynamic, real-world approach to training that connects deeply with learners.",
-      linkedin: "https://linkedin.com/in/dr-sarah-rodriguez",
-      email: "s.rodriguez@pharmaexcellence.com"
     },
     {
       id: 3,
@@ -35,8 +31,6 @@ export default function Team() {
       designation: "Co-founder & Director – Quality & Operations",
       image: member2,
       content: "With 13 years of experience across quality control, teaching, and pharmaceutical sales, Anamika brings a rare 360-degree perspective to pharma training. A Master’s in Pharmacy and current PhD scholar, she combines academic depth with real-world insight.",
-      linkedin: "https://linkedin.com/in/james-thompson-pharma",
-      email: "j.thompson@pharmaexcellence.com"
     }
   ];
 

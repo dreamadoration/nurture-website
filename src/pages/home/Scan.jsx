@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import ScanImage from "../../assets/images/qrCode.jpg"
 
 const HowToScan = () => {
   const steps = [
@@ -63,11 +64,13 @@ const HowToScan = () => {
           {/* QR Code */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white p-8 text-center">
-              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center border-2 border-dashed border-blue-300">
+              <div className="w-64  mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center border-2 border-dashed border-blue-300">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">📱</div>
-                  <p className="text-sm text-gray-600">QR Code</p>
-                  <p className="text-xs text-gray-500 mt-1">Scan to Pay</p>
+                  <div className="text-6xl mb-4">
+                    <img src={ScanImage} />
+                  </div>
+                  {/* <p className="text-sm text-gray-600">QR Code</p>
+                  <p className="text-xs text-gray-500 mt-1">Scan to Pay</p> */}
                 </div>
               </div>
               <div className="mt-6 p-4 bg-gray-100 rounded-lg">
