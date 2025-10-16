@@ -192,13 +192,10 @@ export default function NurtureBusiness() {
               </div>
               {/* Floating stats */}
               <div className="absolute -bottom-6 -left-2 md:-left-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
-                <div className="text-2xl font-bold text-blue-900 font-rubik">95%</div>
+                <div className="text-2xl font-bold text-blue-900 font-rubik">100%</div>
                 <div className="text-sm text-muted-foreground font-heebo">Success Rate</div>
               </div>
-              <div className="absolute -top-10 -right-2 md:-right-6 bg-white rounded-xl shadow-lg p-4 border border-[#ddd]">
-                <div className="text-2xl font-bold text-blue-900 font-rubik">50K+</div>
-                <div className="text-sm font-heebo text-muted-foreground">Trained</div>
-              </div>
+
             </div>
           </div>
         </div>

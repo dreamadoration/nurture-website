@@ -99,7 +99,7 @@ export default function ValuesPage() {
             <h2 className="text-3xl md:text-4xl font-bold font-heebo">Social Impact</h2>
           </div>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto font-rubik text-balance">
-            Nurture is on a mission to forge futures in pharma.
+           Nurture is on a mission to forge futures in pharma and to restore the lost respect of medical representatives.
           </p>
         </div>
       </section>

@@ -99,7 +99,7 @@ const packages = [
     features: [
       {
         heading: "Pharmaceutical & Therapeutic Knowledge",
-        points: ["Product Knowledge", "Therapeutic Area Expertise"],
+        points: ["Product Knowledge", "Therapeutic Area Knowledge"],
       },
       {
         heading: "In-Clinic Effectiveness",
@@ -114,7 +114,7 @@ const packages = [
         points: ["Interpreting Clinical Data", "Engaging in Scientific Dialogue"],
       },
       {
-        heading: "Sales & Communication Mastery",
+        heading: "Sales & Communication",
         points: ["Effective Communication", "Presentation Skills"],
       },
       {

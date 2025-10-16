@@ -163,16 +163,12 @@ export default function TrainingModePage() {
             <h2 className="text-3xl md:text-4xl font-heebo font-bold mb-6">
               Ready to Experience Interactive Learning?
             </h2>
-            <p className="text-lg  mb-8 max-w-2xl  font-rubik mx-auto">
+            <p className="text-lg  mb-4 max-w-2xl  font-rubik mx-auto">
               This online training mode ensures maximum involvement and fosters
               a collaborative learning environment tailored for professional
               growth.
             </p>
-            <div className="flex flex-col sm:flex-row font-heebo gap-4 justify-center">
-              <Button className="bg-white hover:bg-blue-700 hover:text-white rounded-[6px] py-2 cursor-pointer text-blue-900 font-semibold">
-                Schedule Your Training
-              </Button>
-            </div>
+           
           </div>
           </section>
         

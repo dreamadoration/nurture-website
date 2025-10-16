@@ -10,7 +10,7 @@ export default function WhyChooseUs() {
     {
       title: "Personalized Approach",
       description:
-        "Whether you're an individual looking to upskill or a company looking to improve team performance, we create customized programs that address your specific needs. We tailor our training programs to meet the specific needs of each",
+        "Whether you're an individual looking to upskill or a company looking to improve team performance, we create customized programs that address your specific needs. We tailor our training programs to meet the specific needs of each trainee, ensuring that everyone walks away with the tools they need to succeed.",
     },
     {
       title: "End-to-End Support",
@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
-            <Badge className="mb-4 font-heebo rounded-[6px] text-md bg-blue-100 text-blue-800 hover:bg-blue-200">We don’t just train - we transform</Badge>
+            <Badge className="mb-4 font-heebo rounded-[6px] text-md bg-blue-100 text-blue-800 hover:bg-blue-200">We don’t just train - WE TRANSFORM</Badge>
            <h2 className="text-4xl md:text-5xl font-heebo font-bold mb-6 text-gray-900">
             Why Choose
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">

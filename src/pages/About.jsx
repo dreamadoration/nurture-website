@@ -40,7 +40,7 @@ export default function About() {
               Trust Nurture to deliver a worry-free training experience that drives lasting results for your organization.”
             </blockquote>
             <p className="text-gray-700 leading-relaxed font-rubik">
-              <span className="font-semibold text-slate-700">At Nurture, growth is most powerful when it’s intentional.</span> 
+              <span className="font-semibold text-slate-700">At Nurture, growth is most powerful when it’s intentional. </span> 
               That’s why we offer tailored online training solutions designed not just to meet checkboxes, but to truly empower teams.
             </p>
             <p className="text-gray-700 leading-relaxed font-rubik">
@@ -48,7 +48,8 @@ export default function About() {
             </p>
             <div className="pt-2">
               <p className="font-semibold text-lg text-[#0059b3] font-heebo">– MOHD IMRAN KHAN</p>
-              <p className="text-sm text-gray-500 font-rubik">Founder & CEO, Nurture</p>
+              <p className="text-sm text-gray-500 font-rubik pl-4">Founder & CEO</p>
+              <p className="text-sm text-gray-500 font-rubik pl-4">Nurture Training Solutions</p>
             </div>
           </div>
           <div className="relative flex justify-center">

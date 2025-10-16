@@ -56,7 +56,7 @@ const scrollToSection = (sectionId) => {
           <div className="flex items-center gap-6">
             <a href="tel:9711303396" className="flex items-center gap-2 hover:underline">
               <Phone className="w-4 h-4" />
-              <span>9711303396</span>
+              <span>+91 9711303396</span>
             </a>
             <a href="mailto:support@nurtureorg.com" className="flex items-center gap-2 hover:underline">
               <Mail className="w-4 h-4" />
@@ -76,7 +76,7 @@ const scrollToSection = (sectionId) => {
 </button>
 
             <div className="flex items-center gap-2">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-teal-300">
+              <a href="https://www.facebook.com/share/1K7RavQ1kE/" target="_blank" rel="noreferrer" className="hover:text-teal-300">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==

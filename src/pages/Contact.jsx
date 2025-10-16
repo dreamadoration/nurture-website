@@ -126,7 +126,7 @@ BENGALURU- 562125</p>
                   <Phone className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 font-heebo">Call Us</h3>
-                <p className="text-xl font-rubik"><a href="tel:9711303396">9711303396</a></p>
+                <p className="text-xl font-rubik"><a href="tel:9711303396">+91 9711303396</a></p>
               </CardContent>
             </Card>
 

@@ -54,7 +54,7 @@ const services = [
                     icon: Database,
                     title: "CRM Training",
                     description:
-                      "Hands-on training in using Customer Relationship Management tools to manage leads, track interactions, and build long-term customer engagement.",
+                      "Training on managing customer leads, tracking interactions, and nurturing long-term customer engagement.",
                     color: "indigo",
                     gradient: "from-indigo-500 to-blue-500",
                     bgGradient: "from-indigo-50 to-indigo-100",
@@ -129,17 +129,6 @@ export default function Services() {
             <p className="text-gray-600 font-rubik leading-relaxed text-sm">
               {service.description}
             </p>
-
-            <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-              <Button
-                variant="outline"
-                size="sm"
-                className={`border-2 text-${service.color}-600 font-rubik hover:bg-gradient-to-r ${service.gradient} hover:text-white hover:border-transparent transition-all duration-300 text-xs`}
-              >
-                Learn More
-                <ArrowRight className="ml-1 w-3 h-3" />
-              </Button>
-            </div>
           </CardContent>
         </Card>
       ))}

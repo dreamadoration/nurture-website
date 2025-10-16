@@ -50,7 +50,7 @@ export default function Footer() {
               Empower your team to drive your business forward. Build essential skills across your teams and boost impact and agility with technology, data, and leadership. Save time and training costs with content customized according to your needs.
             </p>
             <div className="flex gap-4">
-              {[{ icon: Facebook, link: "#" }, { icon: Instagram, link: "https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==" }, { icon: Linkedin, link: "https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" }, {icon: Youtube, link: "https://www.youtube.com/@NurtureTrainingSolutions"}].map((item, index) => (
+              {[{ icon: Facebook, link: "https://www.facebook.com/share/1K7RavQ1kE/" }, { icon: Instagram, link: "https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==" }, { icon: Linkedin, link: "https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" }, {icon: Youtube, link: "https://www.youtube.com/@NurtureTrainingSolutions"}].map((item, index) => (
                 <a
                   key={index}
                   href={item.link}
@@ -151,7 +151,7 @@ BENGALURU- 562125</span>
                 <div className="bg-blue-600 p-2 rounded-full text-white">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span>9711303396</span>
+                <span>+91 9711303396</span>
                 </div>
                 </a>
               </div>
