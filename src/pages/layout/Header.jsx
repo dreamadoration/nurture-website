@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { useEffect, useState } from "react"
 import { ChevronDown, ChevronUp, Facebook, Instagram, Linkedin, Mail, Menu, Phone, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import logoImage from "../../assets/images/logo.png"
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 
 
 const storyItems = [
@@ -48,6 +49,18 @@ const scrollToSection = (sectionId) => {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   }
 };
+
+let timeoutRef = useRef(null);
+
+const handleEnter = (section) => {
+  clearTimeout(timeoutRef.current);
+  setOpenSection(section);
+};
+
+const handleLeave = () => {
+  timeoutRef.current = setTimeout(() => setOpenSection(null), 200);
+};
+
   return (
     <>
       {/* Top bar */}
@@ -100,7 +113,7 @@ const scrollToSection = (sectionId) => {
           {/* Logo */}
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center space-x-2">
       <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-     <img className="w-[90px]" src={logoImage} alt = "Nurture" />
+     <img className="w-[80px]" src={logoImage} alt = "Nurture" />
       </a>
 
           </Link>
@@ -115,65 +128,75 @@ const scrollToSection = (sectionId) => {
             </Link>
 
             {/* Story Dropdown */}
-            <DropdownMenu open={openSection === "ourStory"} onOpenChange={(open) => setOpenSection(open ? "ourStory" : null)}>
-  <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main" asChild>
-    <span
-      onMouseEnter={() => setOpenSection("ourStory")}
-      onMouseLeave={() => setOpenSection(null)}
-      className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer"
-    >
-      Story <ChevronDown className="w-4 h-4" />
-    </span>
-  </DropdownMenuTrigger>
+            <div
+  onMouseEnter={() => handleEnter("ourStory")}
+  onMouseLeave={handleLeave}
+  className="relative"
+>
+  <Popover open={openSection === "ourStory"}>
+    <PopoverTrigger asChild>
+      <span className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer font-medium">
+        Story <ChevronDown className="w-4 h-4" />
+      </span>
+    </PopoverTrigger>
 
-  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("ourStory")} onMouseLeave={() => setOpenSection(null)}>
-    {storyItems.map((item) => (
-      <DropdownMenuItem key={item.href} asChild>
-        <Link to={item.href} className="w-full px-3 py-4 text-gray-700 hover:bg-cyan-50 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold">
+    <PopoverContent className="w-64 bg-white border-gray-200 p-0   shadow-lg font-rubik ">
+      {storyItems.map((item) => (
+        <Link
+          key={item.href}
+          to={item.href}
+          className="block w-full px-3 py-4 text-gray-700 border-b border-[#ddd] hover:bg-cyan-50 hover:text-blue-900  font-heebo font-semibold"
+        >
           {item.title}
         </Link>
-      </DropdownMenuItem>
-    ))}
-  </DropdownMenuContent>
-</DropdownMenu>
+      ))}
+    </PopoverContent>
+  </Popover>
+</div>
+
 
 
             {/* Programs Dropdown */}
-                  <DropdownMenu open={openSection === "program"} onOpenChange={(open) => setOpenSection(open ? "program" : null)}>
-  <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-700 hover:text-cyan-600 font-medium menu-main" asChild>
-    <span
-      onMouseEnter={() => setOpenSection("program")}
-      onMouseLeave={() => setOpenSection(null)}
-      className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 cursor-pointer"
+                   <div
+      onMouseEnter={() => handleEnter("program")}
+      onMouseLeave={handleLeave}
+      className="relative"
     >
-      Programs <ChevronDown className="w-4 h-4" />
-    </span>
-  </DropdownMenuTrigger>
+      <Popover open={openSection === "program"}>
+        {/* Hover Trigger */}
+        <PopoverTrigger asChild>
+          <span className="flex items-center gap-1 text-gray-700 hover:text-cyan-600 font-medium cursor-pointer">
+            Programs <ChevronDown className="w-4 h-4" />
+          </span>
+        </PopoverTrigger>
 
-  <DropdownMenuContent className="w-64 bg-white border-gray-200 shadow-lg  hover:text-cyan-700 font-rubik" onMouseEnter={() => setOpenSection("program")} onMouseLeave={() => setOpenSection(null)}>
-    {programItems.map((item) => (
-      <DropdownMenuItem key={item.href} asChild>
-          {item.href.startsWith("/") ? (
-        // Normal page link
-        <Link
-          to={item.href}
-          className="w-full px-3 py-4 text-gray-700 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold"
+        {/* Dropdown Content */}
+        <PopoverContent
+          align="start"
+          className="w-64 bg-white border border-gray-200 shadow-lg font-rubik p-0"
         >
-          {item.title}
-        </Link>
-      ) : (
-        // Scroll to section
-        <Link
-          onClick={() => scrollToSection(item.href)}
-          className="w-full px-3 py-4 text-gray-700 font-heebo border-b border-[#ddd] cursor-pointer hover:text-blue-900 font-rubik font-bold"
-        >
-          {item.title}
-        </Link>
-      )}
-      </DropdownMenuItem>
-    ))}
-  </DropdownMenuContent>
-</DropdownMenu>
+          {programItems.map((item) => (
+            <div key={item.href}>
+              {item.href.startsWith("/") ? (
+                <Link
+                  to={item.href}
+                  className="block w-full px-3 py-4 text-gray-700 border-b border-[#ddd] hover:bg-cyan-50 hover:text-blue-900  font-heebo font-semibold"
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <Link
+                  onClick={() => scrollToSection(item.href)}
+                  className="block w-full px-3 py-4 text-gray-700 border-b border-[#ddd] hover:bg-cyan-50 hover:text-blue-900  font-heebo font-semibold"
+                >
+                  {item.title}
+                </Link>
+              )}
+            </div>
+          ))}
+        </PopoverContent>
+      </Popover>
+    </div>
 
             <Link to="/contact" className="text-gray-700 hover:text-cyan-600 font-medium">
               Contact

@@ -1,6 +1,7 @@
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, NavigationOff, Phone, Youtube } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import Link
+import logoImage from "../../assets/images/logo.png"
 
 export default function Footer() {
   const [newYear, setNewYear] = useState("");
@@ -42,26 +43,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           
           {/* Brand + About */}
-          <div>
-            <h3 className="text-3xl font-heebo font-bold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4">
-              Nurture
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed max-w-sm font-rubik">
+          <div className=''>
+                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center space-x-2">
+                  <a href="/" className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                 <img className="w-[90px]" src={logoImage} alt = "Nurture" />
+                  </a>
+            
+                      </Link>
+            <p className="text-gray-600 mb-8 leading-relaxed max-w-sm font-rubik mt-2">
               Empower your team to drive your business forward. Build essential skills across your teams and boost impact and agility with technology, data, and leadership. Save time and training costs with content customized according to your needs.
             </p>
-            <div className="flex gap-4">
-              {[{ icon: Facebook, link: "https://www.facebook.com/share/1K7RavQ1kE/" }, { icon: Instagram, link: "https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==" }, { icon: Linkedin, link: "https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" }, {icon: Youtube, link: "https://www.youtube.com/@NurtureTrainingSolutions"}].map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  className="bg-blue-100 p-3 rounded-full hover:bg-blue-600 hover:text-white transition-colors cursor-pointer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <item.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
+            
           </div>
 
           {/* Quick Links */}
@@ -155,6 +147,19 @@ BENGALURU- 562125</span>
                 </div>
                 </a>
               </div>
+              <div className="flex gap-4 mt-2">
+              {[{ icon: Facebook, link: "https://www.facebook.com/share/1K7RavQ1kE/" }, { icon: Instagram, link: "https://www.instagram.com/nurtureorg07?igsh=MWVmazV1eHVyNjVycg==" }, { icon: Linkedin, link: "https://www.linkedin.com/in/nurture-training-solutions-7b940a38a" }, {icon: Youtube, link: "https://www.youtube.com/@NurtureTrainingSolutions"}].map((item, index) => (
+                <a
+                  key={index}
+                  href={item.link}
+                  className="bg-blue-100 p-3 rounded-full hover:bg-blue-600 hover:text-white transition-colors cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <item.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
             </div>
           </div>
         </div>
